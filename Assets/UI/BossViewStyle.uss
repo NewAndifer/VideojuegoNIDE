@@ -1,0 +1,13 @@
+:root {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.TimeContainer {
+}
+
+.Heart {
+    background-image: url("project://database/Assets/Brackeys/2D%20Mega%20Pack/Items%20&%20Icons/Pixel%20Art/Heart.png?fileID=2800000&guid=222d62d87db5931498bb85845842b0d3&type=3#Heart");
+    width: 48px;
+    height: 48px;
+}

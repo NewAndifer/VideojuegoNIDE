@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="DialogueBox" style="flex-grow: 1; width: 1920px; height: 1080px;">
+        <ui:Label text="Presiona E para interactuar" style="position: absolute; height: 65px; width: 483px; top: 285px; left: 558px; font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/BoldPixels/Assets/font/BoldPixels.otf?fileID=12800000&amp;guid=19b9bfe81b147ba4f91b639e7c1b07d9&amp;type=3#BoldPixels&quot;);"/>
+        <ui:Label text="Aldeano&#10;" name="MessageText" style="position: absolute; height: 278px; width: 597px; top: 368px; left: 489px; font-size: 40px; -unity-font-definition: url(&quot;project://database/Assets/BoldPixels/Assets/font/BoldPixels.otf?fileID=12800000&amp;guid=19b9bfe81b147ba4f91b639e7c1b07d9&amp;type=3#BoldPixels&quot;); max-width: 300px; background-image: none;"/>
+    </ui:VisualElement>
+</ui:UXML>

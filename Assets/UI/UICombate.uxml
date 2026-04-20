@@ -1,0 +1,22 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UICombate.uss?fileID=7433441132597879392&amp;guid=7d4121d11ef1b4e4da0191eca2e19e5b&amp;type=3"/>
+    <ui:VisualElement name="ContenedorPrincipal" picking-mode="Ignore" class="contenedorPrincipal">
+        <ui:VisualElement name="HUD" picking-mode="Ignore" class="HUD" style="justify-content: space-around;">
+            <ui:VisualElement name="ContenedorNumPreguntas" class="contenedorNumPreguntas">
+                <ui:Label text="Vidas: " name="LabelPregunta" class="textoHUD"/>
+                <ui:Label text="num" name="NumPregunta" class="textoHUD"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="ContenedorProgreso" class="contenedorProgreso">
+                <ui:Label text="Progreso:" name="LabelProgreso" class="textoHUD"/>
+                <ui:Label text="num" name="NumProgreso" class="textoHUD"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label text="Pregunta" name="Pregunta" class="pregunta labelPregunta" style="-unity-text-align: middle-center;"/>
+        <ui:VisualElement name="ContenedorPreguntas" class="contenedorPreguntas">
+            <ui:Button text="Button" name="Boton1" class="boton"/>
+            <ui:Button text="Button" name="Boton2" class="boton"/>
+            <ui:Button text="Button" name="Boton3" class="boton"/>
+            <ui:Button text="Button" name="Boton4" class="boton"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
