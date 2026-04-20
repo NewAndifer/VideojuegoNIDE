@@ -17,6 +17,28 @@ public class NPCInteraction : MonoBehaviour
     private bool isPlayerInRange = false;
     private bool isDialogueActive = false;
 
+    
+    public bool GetIsDialogueActive() { return isDialogueActive; }
+    public int GetCurrentCardIndex() { return currentCardIndex; }
+    public bool GetIsPlayerInRange() { return isPlayerInRange; }
+
+    public void SimularEntrarRango() { isPlayerInRange = true; }
+    
+    public void SimularSalirRango() 
+    { 
+        isPlayerInRange = false; 
+        CloseDialogue(); 
+    }
+    
+    public void SimularBotonInteraccion() 
+    { 
+        if (isPlayerInRange) 
+        {
+            HandleInteraction(); 
+        }
+    }
+
+
     void Start()
     {
         if (uiDocument == null) uiDocument = GetComponentInChildren<UIDocument>();
@@ -52,7 +74,7 @@ public class NPCInteraction : MonoBehaviour
             Debug.Log("--- [LOGIC] Iniciando diálogo...");
             isDialogueActive = true;
             currentCardIndex = 0;
-            dialogueBox.style.display = DisplayStyle.Flex;
+            if (dialogueBox != null) dialogueBox.style.display = DisplayStyle.Flex; 
             UpdateUI();
         }
         else
@@ -80,7 +102,7 @@ public class NPCInteraction : MonoBehaviour
     void CloseDialogue()
     {
         isDialogueActive = false;
-        dialogueBox.style.display = DisplayStyle.None;
+        if (dialogueBox != null) dialogueBox.style.display = DisplayStyle.None;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

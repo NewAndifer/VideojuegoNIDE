@@ -13,6 +13,16 @@ public class BossUIManager : MonoBehaviour
     private float timeRemaining = 60f; 
     private bool isTimerActive = false;
 
+    public float GetTimeRemaining() { return timeRemaining; }
+    public bool GetIsTimerActive() { return isTimerActive; }
+
+    public string FormatearTiempo(float timeInSeconds)
+    {
+        int minutes = Mathf.FloorToInt(timeInSeconds / 60);
+        int seconds = Mathf.FloorToInt(timeInSeconds % 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
     private void Awake()
     {
         if (Instance == null) { Instance = this; }
@@ -65,13 +75,11 @@ public class BossUIManager : MonoBehaviour
         isTimerActive = false;
     }
 
-    private void UpdateTimerText(float timeInSeconds)
+   private void UpdateTimerText(float timeInSeconds)
     {
         if (timeCountLabel == null) return;
-
-        int minutes = Mathf.FloorToInt(timeInSeconds / 60);
-        int seconds = Mathf.FloorToInt(timeInSeconds % 60);
-        timeCountLabel.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        
+        timeCountLabel.text = FormatearTiempo(timeInSeconds);
     }
 
     private void OnTimeOut()

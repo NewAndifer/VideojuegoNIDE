@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
-    public Animator animator; 
-    
+    public Animator animator;
+
     public float speed = 2.5f;
-    
-    public float stoppingDistance = 4f; 
+
+    public float stoppingDistance = 4f;
 
     private Transform targetPlayer;
 
@@ -39,21 +39,23 @@ public class EnemyFollow : MonoBehaviour
     // Update se llama una vez por frame
     void Update()
     {
-        // Medida de seguridad: si el jugador fue destruido o no existe, salimos del Update
         if (targetPlayer == null) return;
 
-        // Calculamos la distancia exacta entre el enemigo y el jugador
-        
-        float distanceToPlayer = Vector2.Distance(transform.position, targetPlayer.position);
-
-        // Si la distancia es mayor a nuestro límite de frenado, nos acercamos
-        if (distanceToPlayer > stoppingDistance)
+        // Ahora el Update simplemente le pregunta al cerebro dónde tiene que ponerse
+        transform.position = CalcularNuevaPosicion(transform.position, targetPlayer.position, speed, stoppingDistance, Time.deltaTime);
+    }
 
 
+
+    public Vector2 CalcularNuevaPosicion(Vector2 posActual, Vector2 posObjetivo, float vel, float distFrenado, float deltaTiempo)
+    {
+        float distanceToPlayer = Vector2.Distance(posActual, posObjetivo);
+
+        if (distanceToPlayer > distFrenado)
         {
-            // MoveTowards toma 3 valores: Posición actual, Posición objetivo, y la velocidad máxima por frame
-            transform.position = Vector2.MoveTowards(transform.position, targetPlayer.position, speed * Time.deltaTime);
+            return Vector2.MoveTowards(posActual, posObjetivo, vel * deltaTiempo);
         }
-        
+
+        return posActual;
     }
 }

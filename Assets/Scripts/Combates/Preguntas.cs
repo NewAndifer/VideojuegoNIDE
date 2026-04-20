@@ -26,6 +26,7 @@ public class Preguntas : MonoBehaviour
     public int maxAciertos = 10;
     public int vidas = 5;
     public int vidasMaximas = 5;
+    public float tiempoEspera = 1f;
     private List<Button> registeredButtons = new List<Button>();
 
     public static event Action OnAcierto;
@@ -296,7 +297,7 @@ public class Preguntas : MonoBehaviour
         return listaNumeros;
     }
 
-    int resultOperation(string op, List<int> numAleatorios)
+    public int resultOperation(string op, List<int> numAleatorios)
     {
 
         if (op == null) op = "";
@@ -350,7 +351,7 @@ public class Preguntas : MonoBehaviour
         return resultado;
     }
 
-    string stringOperation(string op, List<int> numAleatorios)
+    public string stringOperation(string op, List<int> numAleatorios)
     {
 
         if (op == null) op = "";
@@ -390,7 +391,7 @@ public class Preguntas : MonoBehaviour
         return sb.ToString();
     }
 
-    void botonIncorrecto(int index)
+    public void botonIncorrecto(int index)
     {
         vidas--;
         if (labelPregunta != null)
@@ -400,7 +401,7 @@ public class Preguntas : MonoBehaviour
         OnFallo?.Invoke();
     }
 
-    void botonCorrecto(int index)
+    public void botonCorrecto(int index)
     {
         aciertosAcumulados++;
         if (labelProgreso != null)
@@ -438,7 +439,7 @@ public class Preguntas : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(tiempoEspera);
 
         for (int i = 0; i < replyButtons.Length; i++)
         {

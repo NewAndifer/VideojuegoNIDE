@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2827491168520601724
+--- !u!1 &3818519807873405856
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 203580571786970009}
-  - component: {fileID: 6726452667689629863}
-  - component: {fileID: 7423769520474617975}
+  - component: {fileID: 5895179757509619178}
+  - component: {fileID: 2380531271787643974}
+  - component: {fileID: 1291319913204932404}
   m_Layer: 5
-  m_Name: UIPausa
+  m_Name: UIMonedas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &203580571786970009
+--- !u!4 &5895179757509619178
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827491168520601724}
+  m_GameObject: {fileID: 3818519807873405856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,13 +33,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6726452667689629863
+--- !u!114 &2380531271787643974
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827491168520601724}
+  m_GameObject: {fileID: 3818519807873405856}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: 8d780a3f08f864631a8a3019cc1dd79e, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: afe0a16053b0744ab9432809ebd9eb86, type: 3}
-  m_SortingOrder: 2
+  sourceAsset: {fileID: 9197481963319205126, guid: e6c850b7b5ad04609b86ba144d7747d6, type: 3}
+  m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -56,16 +56,27 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
---- !u!114 &7423769520474617975
+--- !u!114 &1291319913204932404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2827491168520601724}
+  m_GameObject: {fileID: 3818519807873405856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef23068b993764bbfb3c3e27be2af45e, type: 3}
+  m_Script: {fileID: 11500000, guid: c9bc63c6b70a049809b9591e88bce292, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pausa
-  estaPausado: 0
+  m_EditorClassIdentifier: Assembly-CSharp::HUDMonedas
+  uiDocument: {fileID: 0}
+  nombreIconoMoneda: IconoMoneda
+  nombreTextoMonedas: TextoMonedas
+  framesAnimacion:
+  - {fileID: 133982719826790466, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
+  - {fileID: 8110719193379804542, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
+  - {fileID: 8893786113882650503, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
+  - {fileID: -2990250524230820611, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
+  - {fileID: 3497017549717050266, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
+  - {fileID: -1473889284650361304, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
+  - {fileID: 5803896622747376079, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
+  cuadrosPorSegundo: 12
