@@ -70,6 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Preguntas
   uiDocument: {fileID: 0}
   dificultad: 1
-  operacion: resta
+  operacion: 
   aciertosAcumulados: 0
+  maxAciertos: 5
   vidas: 5
+  vidasMaximas: 5
+  tiempoEspera: 1

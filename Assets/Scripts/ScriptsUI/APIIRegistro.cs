@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.Networking; // Indispensable para la conexión
 
 public class APIIRegistro : MonoBehaviour
 {
@@ -9,15 +11,16 @@ public class APIIRegistro : MonoBehaviour
     private Label Estatus;
     private TextField tfID;
     private TextField tfContrasena;
-    private string url;
 
+    [Header("Configuración de API")]
+    public string url;
+
+    [System.Serializable]
     public struct Credenciales
     {
         public int id;
         public string password;
     }
-
-
 
     void OnEnable()
     {
@@ -32,8 +35,8 @@ public class APIIRegistro : MonoBehaviour
 
     void OnDisable()
     {
-        btnEnviarDatos.clicked -= OnLoginClicked;
-
+        if (btnEnviarDatos != null)
+            btnEnviarDatos.clicked -= OnLoginClicked;
     }
 
     private void OnLoginClicked()
@@ -55,27 +58,54 @@ public class APIIRegistro : MonoBehaviour
 
     IEnumerator Autenticacion(string idString, string contrasena)
     {
-        Credenciales p = new Credenciales();
-
-        if (int.TryParse(idString, out int idConvertido))
+        if (!int.TryParse(idString, out int idConvertido))
         {
-            p.id = idConvertido;
-        }
-        else
-        {
-            Debug.LogError("El ID ingresado no es un número válido.");
             Estatus.text = "ID debe ser numérico";
             btnEnviarDatos.SetEnabled(true);
             yield break;
         }
 
-        p.password = contrasena;
-
+        Credenciales p = new Credenciales { id = idConvertido, password = contrasena };
         string datosJson = JsonUtility.ToJson(p);
-        Debug.Log("JSON: " + datosJson);
-        yield return null;
+        Debug.Log("Enviando JSON: " + datosJson);
+
+        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+        {
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(datosJson);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                string jsonRespuesta = request.downloadHandler.text;
+
+                DatosJugador datos = JsonUtility.FromJson<DatosJugador>(jsonRespuesta);
+
+                GameManager.Instancia.jugadorActivo = datos;
+
+                foreach (Enemigo e in datos.enemigosDerrotados)
+                {
+                    Debug.Log("NPC ID: " + e.id + " está derrotado: " + e.derrotado);
+                }
+
+                Estatus.text = "¡Sesión iniciada!";
+                SceneManager.LoadScene("Menu");
+            }
+            else
+            {
+                Debug.LogError("Error de API: " + request.error);
+                Estatus.text = "Error: Usuario o contraseña incorrectos";
+                btnEnviarDatos.SetEnabled(true);
+            }
+        }
     }
 
-
-
+    IEnumerator CambiarEscena()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Menu");
+    }
 }

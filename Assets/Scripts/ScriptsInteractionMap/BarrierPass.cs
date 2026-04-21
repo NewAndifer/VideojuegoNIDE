@@ -8,15 +8,15 @@ public class CercaBloqueada : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (EstadoJuego.monedas >= costo)
+            if (GameManager.Instancia.jugadorActivo.monedas >= costo)
             {
-                EstadoJuego.monedas -= costo;
+                GameManager.Instancia.jugadorActivo.monedas -= costo;
                 gameObject.SetActive(false); 
-                Debug.Log("Pasaste! Monedas restantes: " + EstadoJuego.monedas);
+                Debug.Log("Pasaste! Monedas restantes: " + GameManager.Instancia.jugadorActivo.monedas);
             }
             else
             {
-                Debug.Log("Te faltan monedas. Tienes: " + EstadoJuego.monedas);
+                Debug.Log("Te faltan monedas. Tienes: " + GameManager.Instancia.jugadorActivo.monedas);
             }
         }
     }

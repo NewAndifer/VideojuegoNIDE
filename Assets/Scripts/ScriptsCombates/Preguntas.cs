@@ -37,6 +37,13 @@ public class Preguntas : MonoBehaviour
 
     void OnEnable()
     {
+        if (GameManager.Instancia != null && GameManager.Instancia.jugadorActivo != null)
+        {
+            string diffStr = GameManager.Instancia.jugadorActivo.dificultad;
+            dificultad = (diffStr == "Fácil") ? 1 : (diffStr == "Media") ? 2 : 3;
+
+            operacion = GameManager.Instancia.operacionActual;
+        }
 
         uiDocument = GetComponent<UIDocument>();
 
@@ -407,26 +414,29 @@ public class Preguntas : MonoBehaviour
         if (labelProgreso != null)
             labelProgreso.text = $"{aciertosAcumulados}/{maxAciertos}";
 
-        // ¡AVISO!: "Alguien acertó, hagan lo que tengan que hacer"
         OnAcierto?.Invoke();
     }
 
     private void CerrarEscena()
     {
+        if (aciertosAcumulados >= maxAciertos)
+        {
+            DarRecompensa();
+        }
+
         SceneManager.LoadScene("Mainmap_01");
     }
 
     private IEnumerator MostrarColoresYEsperar()
     {
-        isEsperando = true; // Bloqueamos los clics
+        isEsperando = true;
 
-        // Coloreamos los botones y los deshabilitamos temporalmente
         for (int i = 0; i < replyButtons.Length; i++)
         {
             var btn = replyButtons[i];
             if (btn == null) continue;
 
-            btn.SetEnabled(false); // Deshabilitar mientras esperamos
+            btn.SetEnabled(false); 
 
             if (i == idxPreguntaCorrecta)
             {
@@ -451,5 +461,31 @@ public class Preguntas : MonoBehaviour
 
         isEsperando = false;
         SetupQuestion();
+    }
+
+    void DarRecompensa()
+    {
+        int idBuscado = GameManager.Instancia.idEnemigoActual;
+        bool yaEstabaDerrotado = false;
+
+        foreach (var e in GameManager.Instancia.jugadorActivo.enemigosDerrotados)
+        {
+            if (e.id == idBuscado)
+            {
+                if (e.derrotado) yaEstabaDerrotado = true;
+                e.derrotado = true; // Marcamos como derrotado
+                break;
+            }
+        }
+
+        if (!yaEstabaDerrotado)
+        {
+            GameManager.Instancia.jugadorActivo.monedas += 300;
+            Debug.Log("¡Primera victoria contra NPC " + idBuscado + "! +300 monedas.");
+        }
+        else
+        {
+            Debug.Log("NPC ya estaba derrotado, no hay monedas extra.");
+        }
     }
 }

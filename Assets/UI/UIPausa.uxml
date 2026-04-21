@@ -9,6 +9,6 @@
             <ui:Button text="Continuar" name="BotonContinuar" class="botones"/>
             <ui:Button text="Menu principal" name="BotonMenuPrincipal" class="botones"/>
         </ui:VisualElement>
-        <ui:VisualElement name="ContenedorRelleno" class="contenedorRelleno"/>
+        <ui:VisualElement name="ContenedorRelleno" picking-mode="Ignore" class="contenedorRelleno"/>
     </ui:VisualElement>
 </ui:UXML>

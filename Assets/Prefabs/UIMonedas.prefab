@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HUDMonedas
   uiDocument: {fileID: 0}
   nombreIconoMoneda: IconoMoneda
-  nombreTextoMonedas: TextoMonedas
+  nombreTextoMonedas: NumMonedas
   framesAnimacion:
   - {fileID: 133982719826790466, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}
   - {fileID: 8110719193379804542, guid: ccb8123351c8a4a4ba97ccec63dd8bb6, type: 3}

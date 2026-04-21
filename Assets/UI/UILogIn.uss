@@ -77,4 +77,28 @@
 .textCampos {
     font-size: 60px;
     -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&guid=71a55b0538d48354b87afab937af74d2&type=3#BoldPixels");
+    background-color: rgb(217, 168, 122);
+    padding-top: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    border-top-width: 8px;
+    border-right-width: 8px;
+    border-bottom-width: 8px;
+    border-left-width: 8px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    width: 70%;
+}
+
+.unity-base-text-field {
+}
+
+.unity-base-field--no-label {
+}
+
+.unity-text-field__input {
+    background-color: rgb(255, 238, 140);
 }
