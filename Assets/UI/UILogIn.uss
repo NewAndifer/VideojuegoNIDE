@@ -1,3 +1,80 @@
 :root {
+}
 
+.contenedorPrincipal {
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    align-self: center;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.contenedorLogIn {
+    justify-content: space-evenly;
+    align-self: center;
+    min-width: 50%;
+    min-height: 80%;
+    max-width: 80%;
+    max-height: 80%;
+    align-items: center;
+    align-content: center;
+    background-image: none;
+    border-top-width: 4px;
+    border-right-width: 4px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.69);
+}
+
+.labelniciarSesion {
+    font-size: 70px;
+    -unity-text-align: middle-center;
+    -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&guid=71a55b0538d48354b87afab937af74d2&type=3#BoldPixels");
+    background-image: url("project://database/Assets/Cowboy%20Cats/C00B7ECE-166D-4160-BDED-58D1B166D550/Untitled%204.png?fileID=-1818288207410235511&guid=59d2a3247597742898c7890e05542e58&type=3#Untitled 4_4");
+    height: 20%;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+
+
+
+.EnviarDatos {
+    -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.otf?fileID=12800000&guid=19b9bfe81b147ba4f91b639e7c1b07d9&type=3#BoldPixels");
+    font-size: 60px;
+    background-image: url("project://database/Assets/Cowboy%20Cats/Untitled%204.png?fileID=-2401453818774780720&guid=52383d200f78a4551836d2ca757c6796&type=3#Untitled 4_5");
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    height: 10%;
+    width: 25%;
+}
+
+.EnviarDatos:hover {
+    background-image: url("project://database/Assets/Cowboy%20Cats/Untitled%204.png?fileID=2935242376306719514&guid=52383d200f78a4551836d2ca757c6796&type=3#Untitled 4_6");
+}
+
+.unity-base-field {
+}
+
+.unity-text-field {
+    width: 70%;
+}
+
+.textCampos {
+    font-size: 60px;
+    -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&guid=71a55b0538d48354b87afab937af74d2&type=3#BoldPixels");
 }

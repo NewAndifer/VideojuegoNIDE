@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ui:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ui="UnityEngine.UIElements"
-    xmlns:uie="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd"
->
-    
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UILogIn.uss?fileID=7433441132597879392&amp;guid=b6c7ca4a6749c46348cc3c0d6365a737&amp;type=3#UILogIn"/>
+    <ui:VisualElement name="ContenedorPrincipal" class="contenedorPrincipal" style="flex-grow: 1; max-width: 100%; max-height: 100%;">
+        <ui:VisualElement name="ContenedorLogIn" class="contenedorLogIn">
+            <ui:Label text="Iniciar Sesión" name="LabelniciarSesion" class="labelniciarSesion" style="width: 550px; height: 175px;"/>
+            <ui:Label text="Ingresa tu ID" name="LabelID" class="textCampos"/>
+            <ui:TextField placeholder-text="Tu ID" name="TfID" vertical-scroller-visibility="AlwaysVisible" style="font-size: 50px; -unity-font-definition: url(&quot;project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&amp;guid=71a55b0538d48354b87afab937af74d2&amp;type=3#BoldPixels&quot;);"/>
+            <ui:Label text="Ingresa tu contraseña" name="LabelContrasena" class="textCampos"/>
+            <ui:TextField placeholder-text="Tu contraseña" name="TfContrasena" vertical-scroller-visibility="AlwaysVisible" style="font-size: 50px; -unity-font-definition: url(&quot;project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&amp;guid=71a55b0538d48354b87afab937af74d2&amp;type=3#BoldPixels&quot;);"/>
+            <ui:Label text="" name="Estatus" style="font-size: 60px; -unity-font-definition: url(&quot;project://database/Assets/BoldPixels/Assets/font/BoldPixels.otf?fileID=12800000&amp;guid=19b9bfe81b147ba4f91b639e7c1b07d9&amp;type=3#BoldPixels&quot;);"/>
+            <ui:Button text="Enviar" name="EnviarDatos" class="EnviarDatos"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>
