@@ -92,11 +92,12 @@ public class APIIRegistro : MonoBehaviour
                 }
 
                 Estatus.text = "¡Sesión iniciada!";
+                print(jsonRespuesta);
                 SceneManager.LoadScene("Menu");
             }
             else
             {
-                Debug.LogError("Error de API: " + request.error);
+                // Debug.LogError("Error de API: " + request.error);
                 Estatus.text = "Error: Usuario o contraseña incorrectos";
                 btnEnviarDatos.SetEnabled(true);
             }

@@ -181,16 +181,20 @@ public class Preguntas : MonoBehaviour
         {
             replyButtons[i].SetEnabled(false);
 
+            // Delegamos el color al script de UI
             Color colorResultado = (i == idxPreguntaCorrecta) ? Color.green : Color.red;
             uiScript.AplicarColorBoton(i, colorResultado);
         }
 
+        // 2. Pausa dramática
         yield return new WaitForSeconds(tiempoEspera);
 
+        // 3. Limpiamos los colores usando el método que creamos en CuestionarioUI
         uiScript.LimpiarColores();
 
         isEsperando = false;
 
+        // 4. Siguiente pregunta
         SetupQuestion();
     }
     void DarRecompensa()

@@ -3344,15 +3344,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2384115214110088991, guid: 05fb118b226df4ccda0971d3bdb52c42, type: 3}
       propertyPath: operacion
-      value: 
+      value: suma
       objectReference: {fileID: 0}
     - target: {fileID: 2384115214110088991, guid: 05fb118b226df4ccda0971d3bdb52c42, type: 3}
       propertyPath: dificultad
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384115214110088991, guid: 05fb118b226df4ccda0971d3bdb52c42, type: 3}
+      propertyPath: uiDocument
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2384115214110088991, guid: 05fb118b226df4ccda0971d3bdb52c42, type: 3}
       propertyPath: maxAciertos
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2384115214110088991, guid: 05fb118b226df4ccda0971d3bdb52c42, type: 3}
       propertyPath: tiempoEspera

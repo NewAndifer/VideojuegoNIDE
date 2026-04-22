@@ -5,13 +5,16 @@ public class DatosJugador
     public string correo;
     public string nombre;
     public int monedas;
-    public string dificultad; 
+    public string dificultad;
     public Enemigo[] enemigosDerrotados;
 }
 
 [System.Serializable]
 public class Enemigo
 {
-    public int id;       
-    public bool derrotado; 
+    public int id;
+    public bool derrotado;
+    public string operacion;
+    public string tipo;
+    public string nombre;
 }

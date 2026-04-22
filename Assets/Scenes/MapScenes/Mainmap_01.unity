@@ -9289,8 +9289,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerFinal
   nombreEscenaFinal: BanditCombat
-  idEnemigoBaseDeDatos: 1
-  operacionParaEsteCombate: Suma
+  idEnemigoBaseDeDatos: 3
+  operacionParaEsteCombate: Division
 --- !u!95 &278852594
 Animator:
   serializedVersion: 7
@@ -20901,8 +20901,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TriggerFinal
   nombreEscenaFinal: BanditCombat
-  idEnemigoBaseDeDatos: 1
-  operacionParaEsteCombate: Suma
+  idEnemigoBaseDeDatos: 2
+  operacionParaEsteCombate: Resta
 --- !u!61 &647944423
 BoxCollider2D:
   m_ObjectHideFlags: 0

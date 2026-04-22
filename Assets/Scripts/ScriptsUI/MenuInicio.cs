@@ -20,7 +20,7 @@ public class MenuInicio : MonoBehaviour
 
     private void IniciarJuego()
     {
-        print("Hola");
+        //print("Hola");
         SceneManager.LoadScene("Mainmap_01");
     }
 

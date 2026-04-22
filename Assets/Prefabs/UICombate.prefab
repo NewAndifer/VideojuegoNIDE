@@ -68,12 +68,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c7a31991d05843d48124a57a74f636b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Preguntas
+  m_EditorClassIdentifier: JuegoPrincipal::Preguntas
   uiDocument: {fileID: 4162019419952101837}
-  dificultad: 0
-  operacion: 
+  dificultad: 1
+  operacion: suma
   aciertosAcumulados: 0
-  maxAciertos: 5
+  maxAciertos: 10
   vidas: 5
   vidasMaximas: 5
   tiempoEspera: 1
