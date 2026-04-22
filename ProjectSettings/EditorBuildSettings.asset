@@ -12,16 +12,16 @@ EditorBuildSettings:
     path: Assets/Scenes/UIScenes/Menu.unity
     guid: 8706704f5b58e410a97797c64c060d8b
   - enabled: 1
-    path: Assets/Scenes/MAPS/Mainmap_01.unity
+    path: Assets/Scenes/MapScenes/Mainmap_01.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/MAPS/BanditCombat.unity
+    path: Assets/Scenes/MapScenes/BanditCombat.unity
     guid: 59a7616cdac7b40cb94c0c3778d49d42
   - enabled: 1
-    path: Assets/Scenes/Individual scenes/Bossfight.unity
+    path: Assets/Scenes/IndividualScenes/Bossfight.unity
     guid: a755c1b5b2edf453dbc868b63cbb3167
   - enabled: 1
-    path: Assets/Scenes/Individual scenes/BossCombat.unity
+    path: Assets/Scenes/IndividualScenes/BossCombat.unity
     guid: 6030d80c39e6ffad69d85da2433184b4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

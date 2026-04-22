@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5126811683255187274}
   - component: {fileID: 7507808269680372821}
   m_Layer: 0
-  m_Name: Bubble
+  m_Name: BurbujaBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

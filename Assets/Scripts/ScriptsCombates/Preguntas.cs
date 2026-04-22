@@ -7,17 +7,14 @@ using UnityEngine.UIElements;
 using System;
 using Random = UnityEngine.Random;
 
+
 public class Preguntas : MonoBehaviour
 {
     public UIDocument uiDocument;
-    public Label labelPregunta;
-    public Label labelProgreso;
-    public int dificultad;
+    private CuestionarioUI uiScript;
 
-
-    private Label opLabel;
-    private List<int> aleatorio = new List<int>();
-    public string operacion;
+    public int dificultad = 1;
+    public string operacion = "suma";
     public Button[] replyButtons;
     private int idxPreguntaCorrecta = -1;
     private bool listenersAssigned = false;
@@ -27,6 +24,7 @@ public class Preguntas : MonoBehaviour
     public int vidas = 5;
     public int vidasMaximas = 5;
     public float tiempoEspera = 1f;
+    private CuestionarioUI ui;
     private List<Button> registeredButtons = new List<Button>();
 
     public static event Action OnAcierto;
@@ -41,24 +39,19 @@ public class Preguntas : MonoBehaviour
         {
             string diffStr = GameManager.Instancia.jugadorActivo.dificultad;
             dificultad = (diffStr == "Fácil") ? 1 : (diffStr == "Media") ? 2 : 3;
-
             operacion = GameManager.Instancia.operacionActual;
         }
 
         uiDocument = GetComponent<UIDocument>();
-
+        uiScript = GetComponent<CuestionarioUI>();
+        uiScript.Inicializar(uiDocument.rootVisualElement);
 
         var root = uiDocument.rootVisualElement;
-
-        labelPregunta = root.Q<Label>("NumPregunta");
-        labelPregunta.text = $"{vidas}/{vidasMaximas}";
-
-        labelProgreso = root.Q<Label>("NumProgreso");
-        labelProgreso.text = $"{aciertosAcumulados}/{maxAciertos}";
-
         var qList = root.Query<Button>().ToList();
         replyButtons = qList != null ? qList.ToArray() : new Button[0];
-        opLabel = root.Q<Label>("Pregunta");
+
+        ActualizarTodoElHUD();
+
 
         if (!listenersAssigned)
         {
@@ -76,6 +69,12 @@ public class Preguntas : MonoBehaviour
         SetupQuestion();
     }
 
+    void ActualizarTodoElHUD()
+    {
+        uiScript.ActualizarVidas(vidas, vidasMaximas);
+        uiScript.ActualizarProgreso(aciertosAcumulados, maxAciertos);
+    }
+
     void OnDisable()
     {
         foreach (var btn in registeredButtons)
@@ -89,93 +88,44 @@ public class Preguntas : MonoBehaviour
 
     void SetupQuestion()
     {
-        if (vidas <= 0)
+        if (vidas <= 0 || aciertosAcumulados >= maxAciertos)
         {
-            foreach (var b in replyButtons)
-            {
-                if (b == null) continue;
-                b.SetEnabled(false);
-            }
             CerrarEscena();
-            Debug.Log("Cuestionario finalizado.");
             return;
         }
 
-        if (aciertosAcumulados >= maxAciertos)
-        {
-            foreach (var b in replyButtons)
-            {
-                if (b == null) continue;
-                b.SetEnabled(false);
-            }
-            CerrarEscena();
-            Debug.Log("Cuestionario finalizado.");
-            return;
-        }
+        var pregunta = GeneradorPreguntas.Generar(dificultad, operacion);
 
-        aleatorio = numerosAleatorios(dificultad, operacion);
-
-        string opNorm = (operacion ?? "").Trim().ToLower();
-        if (opNorm == "resta" || opNorm == "division")
-        {
-            aleatorio.Sort();
-            aleatorio.Reverse();
-        }
-
-        opLabel.text = stringOperation(operacion, aleatorio);
+        uiScript.MostrarPregunta(pregunta.textoOperacion);
+        int resultadoReal = pregunta.resultado;
 
         idxPreguntaCorrecta = Random.Range(0, replyButtons.Length);
-        Debug.Log($"Índice pregunta correcta: {idxPreguntaCorrecta}");
-
-        var respuestasUsadas = new HashSet<int>(replyButtons.Length + 1);
-        int resultadoReal = resultOperation(operacion, aleatorio);
-        respuestasUsadas.Add(resultadoReal);
+        HashSet<int> respuestasUsadas = new HashSet<int> { resultadoReal };
 
         for (int i = 0; i < replyButtons.Length; i++)
         {
-            var btn = replyButtons[i];
-            if (btn == null) continue;
-
             if (i == idxPreguntaCorrecta)
             {
-                btn.text = resultadoReal.ToString();
-                btn.SetEnabled(true);
+                uiScript.ConfigurarBoton(i, resultadoReal.ToString(), true);
             }
             else
             {
-                int respuestaFalsa = resultadoReal;
-                int intentos = 0;
+                int falsa;
                 do
                 {
-                    respuestaFalsa = resultadoReal + Random.Range(-5, 6);
-                    respuestaFalsa = Mathf.Abs(respuestaFalsa);
-                    intentos++;
-                }
-                while (respuestasUsadas.Contains(respuestaFalsa) && intentos < 50);
+                    falsa = Mathf.Abs(resultadoReal + Random.Range(-5, 6));
+                } while (respuestasUsadas.Contains(falsa));
 
-                respuestasUsadas.Add(respuestaFalsa);
-                btn.text = respuestaFalsa.ToString();
-                btn.SetEnabled(true);
+                respuestasUsadas.Add(falsa);
+                uiScript.ConfigurarBoton(i, falsa.ToString(), true);
             }
         }
     }
 
     void OnReplyButtonClicked(int index)
     {
+
         preguntasRespondidas++;
-        if (labelPregunta != null)
-            labelPregunta.text = $"{vidas}/{vidasMaximas}";
-
-
-        for (int i = 0; i < replyButtons.Length; i++)
-        {
-            if (index == idxPreguntaCorrecta)
-            {
-
-            }
-
-        }
-
 
         if (index == idxPreguntaCorrecta)
         {
@@ -185,6 +135,7 @@ public class Preguntas : MonoBehaviour
         {
             botonIncorrecto(index);
         }
+
 
         StartCoroutine(MostrarColoresYEsperar());
     }
@@ -199,221 +150,17 @@ public class Preguntas : MonoBehaviour
         OnReplyButtonClicked(idx);
     }
 
-    List<int> numerosAleatorios(int dificultad, string op)
-    {
-        List<int> listaNumeros = new List<int>();
-        int numPorGenerar = 2;
-        int rango = 10;
-
-        switch (op)
-        {
-            case "suma":
-                switch (dificultad)
-                {
-                    case 1:
-                        rango = 10;
-                        break;
-
-                    case 2:
-                        rango = 100;
-                        break;
-
-                    case 3:
-                        rango = 1000;
-                        break;
-                }
-                break;
-
-
-            case "resta":
-                switch (dificultad)
-                {
-                    case 1:
-                        rango = 10;
-                        break;
-
-                    case 2:
-                        rango = 100;
-                        break;
-
-                    case 3:
-                        rango = 1000;
-                        break;
-                }
-                break;
-
-
-            case "multiplicacion":
-                switch (dificultad)
-                {
-                    case 1:
-                        rango = 10;
-                        break;
-
-                    case 2:
-                        rango = 50;
-                        break;
-
-                    case 3:
-                        rango = 100;
-                        break;
-                }
-                break;
-
-            case "division":
-                switch (dificultad)
-                {
-                    case 1:
-                        rango = 10;
-                        break;
-
-                    case 2:
-                        rango = 20;
-                        break;
-
-                    case 3:
-                        rango = 50;
-                        break;
-                }
-                break;
-
-            default:
-                Debug.LogWarning($"Dificultad desconocida: {dificultad}, usando rango por defecto {rango}.");
-                break;
-        }
-
-        for (int i = 0; i < numPorGenerar; i++)
-        {
-            listaNumeros.Add(Random.Range(1, rango + 1));
-        }
-
-        if (op == "division")
-        {
-            listaNumeros.Sort();
-            listaNumeros.Reverse();
-            int dividendo = 1;
-            for (int i = 0; i < listaNumeros.Count; i++)
-            {
-                dividendo *= listaNumeros[i];
-            }
-
-            listaNumeros[0] = dividendo;
-
-        }
-
-        return listaNumeros;
-    }
-
-    public int resultOperation(string op, List<int> numAleatorios)
-    {
-
-        if (op == null) op = "";
-        op = op.Trim().ToLower();
-
-        int resultado = 0;
-        switch (op)
-        {
-            case "suma":
-                resultado = 0;
-                for (int i = 0; i < numAleatorios.Count; i++)
-                {
-                    resultado += numAleatorios[i];
-                }
-                break;
-
-            case "resta":
-                numAleatorios.Sort();
-                numAleatorios.Reverse();
-                resultado = numAleatorios[0];
-                for (int i = 1; i < numAleatorios.Count; i++)
-                {
-                    resultado -= numAleatorios[i];
-                }
-
-                break;
-
-            case "multiplicacion":
-                resultado = 1;
-                for (int i = 0; i < numAleatorios.Count; i++)
-                {
-                    resultado *= numAleatorios[i];
-                }
-                break;
-
-            case "division":
-                resultado = numAleatorios[0];
-                for (int i = 1; i < numAleatorios.Count; i++)
-                {
-                    resultado /= numAleatorios[i];
-                }
-                break;
-
-
-
-            default:
-                Debug.LogWarning($"Operación desconocida: {op}");
-                break;
-        }
-
-        return resultado;
-    }
-
-    public string stringOperation(string op, List<int> numAleatorios)
-    {
-
-        if (op == null) op = "";
-        op = op.Trim().ToLower();
-
-        char charOperator = '-';
-        var sb = new StringBuilder();
-
-        switch (op)
-        {
-            case "suma":
-                charOperator = '+';
-                break;
-
-            case "resta":
-                charOperator = '-';
-                break;
-
-            case "multiplicacion":
-                charOperator = 'x';
-                break;
-
-            default:
-                charOperator = '/';
-                break;
-        }
-
-        for (int i = 0; i < numAleatorios.Count - 1; i++)
-        {
-            sb.Append(numAleatorios[i].ToString());
-            sb.Append(charOperator);
-        }
-
-        if (numAleatorios.Count > 0)
-            sb.Append(numAleatorios[numAleatorios.Count - 1].ToString());
-
-        return sb.ToString();
-    }
-
     public void botonIncorrecto(int index)
     {
         vidas--;
-        if (labelPregunta != null)
-            labelPregunta.text = $"{vidas}/{vidasMaximas}";
-
-        // ¡AVISO!: "Alguien falló"
+        uiScript.ActualizarVidas(vidas, vidasMaximas); // Actualizar pantalla
         OnFallo?.Invoke();
     }
 
     public void botonCorrecto(int index)
     {
         aciertosAcumulados++;
-        if (labelProgreso != null)
-            labelProgreso.text = $"{aciertosAcumulados}/{maxAciertos}";
-
+        uiScript.ActualizarProgreso(aciertosAcumulados, maxAciertos); // Actualizar pantalla
         OnAcierto?.Invoke();
     }
 
@@ -430,62 +177,52 @@ public class Preguntas : MonoBehaviour
     private IEnumerator MostrarColoresYEsperar()
     {
         isEsperando = true;
-
         for (int i = 0; i < replyButtons.Length; i++)
         {
-            var btn = replyButtons[i];
-            if (btn == null) continue;
+            replyButtons[i].SetEnabled(false);
 
-            btn.SetEnabled(false); 
-
-            if (i == idxPreguntaCorrecta)
-            {
-                btn.style.unityBackgroundImageTintColor = new StyleColor(Color.green);
-            }
-            else
-            {
-                btn.style.unityBackgroundImageTintColor = new StyleColor(Color.red);
-            }
+            Color colorResultado = (i == idxPreguntaCorrecta) ? Color.green : Color.red;
+            uiScript.AplicarColorBoton(i, colorResultado);
         }
-
 
         yield return new WaitForSeconds(tiempoEspera);
 
-        for (int i = 0; i < replyButtons.Length; i++)
-        {
-            var btn = replyButtons[i];
-            if (btn == null) continue;
-
-            btn.style.unityBackgroundImageTintColor = StyleKeyword.Null;
-        }
+        uiScript.LimpiarColores();
 
         isEsperando = false;
+
         SetupQuestion();
     }
-
     void DarRecompensa()
     {
         int idBuscado = GameManager.Instancia.idEnemigoActual;
-        bool yaEstabaDerrotado = false;
+        bool encontrado = false;
 
         foreach (var e in GameManager.Instancia.jugadorActivo.enemigosDerrotados)
         {
             if (e.id == idBuscado)
             {
-                if (e.derrotado) yaEstabaDerrotado = true;
-                e.derrotado = true; // Marcamos como derrotado
+                if (!e.derrotado)
+                {
+                    GameManager.Instancia.jugadorActivo.monedas += 300;
+                    e.derrotado = true;
+                }
+                encontrado = true;
                 break;
             }
         }
 
-        if (!yaEstabaDerrotado)
+        if (!encontrado)
         {
             GameManager.Instancia.jugadorActivo.monedas += 300;
-            Debug.Log("¡Primera victoria contra NPC " + idBuscado + "! +300 monedas.");
-        }
-        else
-        {
-            Debug.Log("NPC ya estaba derrotado, no hay monedas extra.");
+
+            Enemigo nuevoEnemigo = new Enemigo { id = idBuscado, derrotado = true };
+
+            var listaTemporal = new List<Enemigo>(GameManager.Instancia.jugadorActivo.enemigosDerrotados);
+            listaTemporal.Add(nuevoEnemigo);
+            GameManager.Instancia.jugadorActivo.enemigosDerrotados = listaTemporal.ToArray();
+
+            Debug.Log($"Nuevo NPC {idBuscado} derrotado. +300 monedas.");
         }
     }
 }

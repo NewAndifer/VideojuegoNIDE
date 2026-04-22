@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6689994813367869448}
   - component: {fileID: 4162019419952101837}
   - component: {fileID: 1379619196543875349}
+  - component: {fileID: 127331401963465434}
   m_Layer: 5
   m_Name: UICombate
   m_TagString: Untagged
@@ -68,11 +69,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7a31991d05843d48124a57a74f636b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Preguntas
-  uiDocument: {fileID: 0}
-  dificultad: 1
+  uiDocument: {fileID: 4162019419952101837}
+  dificultad: 0
   operacion: 
   aciertosAcumulados: 0
   maxAciertos: 5
   vidas: 5
   vidasMaximas: 5
   tiempoEspera: 1
+--- !u!114 &127331401963465434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436009689684229181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c00d8b9b7fb4060a3a666c0a054cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::CuestionarioUI

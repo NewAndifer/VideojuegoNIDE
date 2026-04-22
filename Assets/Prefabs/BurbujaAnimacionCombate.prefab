@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2372531261786845258}
   - component: {fileID: -6586644771339247478}
   m_Layer: 0
-  m_Name: BurbujaCombate
+  m_Name: BurbujaAnimacionCombate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
