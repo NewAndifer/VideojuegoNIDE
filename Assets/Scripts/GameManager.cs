@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public DatosJugador jugadorActivo;
     public int idEnemigoActual;
     public string operacionActual;
+    public string tipoNPCActual;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void CrearInstancia()

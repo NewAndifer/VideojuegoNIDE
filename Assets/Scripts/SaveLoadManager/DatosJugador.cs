@@ -12,7 +12,7 @@ public class DatosJugador
 [System.Serializable]
 public class Enemigo
 {
-    public int id;
+    public int id_npc;
     public bool derrotado;
     public string operacion;
     public string tipo;

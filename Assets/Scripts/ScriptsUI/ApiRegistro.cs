@@ -86,18 +86,12 @@ public class APIIRegistro : MonoBehaviour
 
                 GameManager.Instancia.jugadorActivo = datos;
 
-                foreach (Enemigo e in datos.enemigosDerrotados)
-                {
-                    Debug.Log("NPC ID: " + e.id + " está derrotado: " + e.derrotado);
-                }
-
                 Estatus.text = "¡Sesión iniciada!";
                 print(jsonRespuesta);
                 SceneManager.LoadScene("Menu");
             }
             else
             {
-                // Debug.LogError("Error de API: " + request.error);
                 Estatus.text = "Error: Usuario o contraseña incorrectos";
                 btnEnviarDatos.SetEnabled(true);
             }
