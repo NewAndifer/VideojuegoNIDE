@@ -81,7 +81,20 @@ public class Dialogue : MonoBehaviour
     private IEnumerator ShowLine()
     {
         dialogueText.text = string.Empty;
-        foreach (char ch in dialogueLines[lineIndex])
+
+        string lineaOriginal = dialogueLines[lineIndex];
+
+        string nombreReal = "Desconocido";
+
+        if (GameManager.Instancia != null && GameManager.Instancia.jugadorActivo != null)
+        {
+            nombreReal = GameManager.Instancia.jugadorActivo.nombre;
+        }
+
+        string lineaProcesada = lineaOriginal.Replace("{PlayerName}", nombreReal);
+
+
+        foreach (char ch in lineaProcesada)
         {
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(typingTime);
