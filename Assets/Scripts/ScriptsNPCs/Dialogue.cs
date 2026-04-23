@@ -19,6 +19,11 @@ public class Dialogue : MonoBehaviour
     private int lineIndex = 0;
     private float typingTime = 0.05f;
 
+    string nombreReal;
+
+
+
+
     private void OnEnable() => interactAction.Enable();
     private void OnDisable() => interactAction.Disable();
 
@@ -39,11 +44,14 @@ public class Dialogue : MonoBehaviour
                 else
                 {
                     StopAllCoroutines();
+
                     dialogueText.text = dialogueLines[lineIndex];
                 }
             }
         }
     }
+
+
 
     private void StartDialogue()
     {
@@ -120,7 +128,7 @@ public class Dialogue : MonoBehaviour
         {
 
             isPlayerInRange = false;
-            dialogueMark.SetActive(false);
+            dialogueMark.SetActive(true);
             Debug.Log("No se puede iniciar un dialogo");
         }
     }
