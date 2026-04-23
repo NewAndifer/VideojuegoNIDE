@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TriggerFinal : MonoBehaviour
+public class InteraccionEnemigo : MonoBehaviour
 {
     [Header("Configuración de Escena")]
     public string nombreEscenaFinal = "BanditCombat";
 
     [Header("Configuración del Combate")]
-    public int idEnemigoBaseDeDatos; 
-    public string operacionParaEsteCombate; 
+    public int idEnemigoBaseDeDatos;
+    public string operacionParaEsteCombate;
     public string tipo;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +18,9 @@ public class TriggerFinal : MonoBehaviour
             {
                 GameManager.Instancia.idEnemigoActual = idEnemigoBaseDeDatos;
                 GameManager.Instancia.operacionActual = operacionParaEsteCombate;
-                
+                GameManager.Instancia.tipoNPCActual = this.tipo;
+
+                Debug.Log($"NPC tipo: {tipo} detectado.");
                 Debug.Log($"Preparando combate contra NPC {idEnemigoBaseDeDatos}. Operación: {operacionParaEsteCombate}");
             }
             else
@@ -26,7 +28,16 @@ public class TriggerFinal : MonoBehaviour
                 Debug.LogError("No se encontró el GameManager en la escena. ¡Asegúrate de que exista!");
             }
 
-            SceneManager.LoadScene(nombreEscenaFinal);
+            string tipoNormalizado = tipo.Trim().ToLower();
+
+            if (tipoNormalizado == "boss")
+            {
+                SceneManager.LoadScene("BossCombat");
+            }
+            else
+            {
+                SceneManager.LoadScene(nombreEscenaFinal);
+            }
         }
     }
 }

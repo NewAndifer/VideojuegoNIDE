@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.Networking;
 
 
 public class Preguntas : MonoBehaviour
 {
+    [Header("Configuración de API")]
+    public string url;
     public UIDocument uiDocument;
     private CuestionarioUI uiScript;
 
@@ -20,30 +23,75 @@ public class Preguntas : MonoBehaviour
     private bool listenersAssigned = false;
     private int preguntasRespondidas = 0;
     public int aciertosAcumulados = 0;
-    public int maxAciertos = 10;
+    public int maxAciertos = 3;
     public int vidas = 5;
     public int vidasMaximas = 5;
     public float tiempoEspera = 1f;
     private CuestionarioUI ui;
     private List<Button> registeredButtons = new List<Button>();
-
     public static event Action OnAcierto;
     public static event Action OnFallo;
-
     private bool isEsperando = false;
+    private string fechaInicioCombate;
+    private float tiempoInicio;
+
+    [System.Serializable]
+    public struct DatosCombateEnviados
+    {
+        public int idEstudiante;
+        public int idNPC;
+        public int preguntasHechas;
+        public int aciertos;
+        public float duracion;
+        public string fecha_combate;
+        public string dificultad;
+    }
+
+    void Start()
+    {
+        fechaInicioCombate = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        tiempoInicio = Time.time;
+
+    }
 
 
     void OnEnable()
     {
+
         if (GameManager.Instancia != null && GameManager.Instancia.jugadorActivo != null)
         {
             string diffStr = GameManager.Instancia.jugadorActivo.dificultad;
-            dificultad = (diffStr == "Fácil") ? 1 : (diffStr == "Media") ? 2 : 3;
+            int dificultadBase = (diffStr == "dificil") ? 3 : (diffStr == "intermedio") ? 2 : 1;
             operacion = GameManager.Instancia.operacionActual;
+            string tipoNPC = GameManager.Instancia.tipoNPCActual.ToLower();
+
+            if (tipoNPC == "boss")
+            {
+                dificultad = dificultadBase + 1;
+                Debug.Log($"Combate contra BOSS detectado. Dificultad escalada a: {dificultad}");
+            }
+            else
+            {
+                dificultad = dificultadBase;
+                Debug.Log($"Combate contra Bandido. Dificultad normal: {dificultad}");
+            }
         }
 
         uiDocument = GetComponent<UIDocument>();
         uiScript = GetComponent<CuestionarioUI>();
+
+        if (uiDocument == null || uiDocument.rootVisualElement == null)
+        {
+            Debug.LogError("Falta el UIDocument o el Root Element en " + gameObject.name);
+            return;
+        }
+
+        if (uiScript == null)
+        {
+            Debug.LogError("No se encontró el script CuestionarioUI en " + gameObject.name);
+            return;
+        }
+
         uiScript.Inicializar(uiDocument.rootVisualElement);
 
         var root = uiDocument.rootVisualElement;
@@ -136,7 +184,6 @@ public class Preguntas : MonoBehaviour
             botonIncorrecto(index);
         }
 
-
         StartCoroutine(MostrarColoresYEsperar());
     }
 
@@ -146,32 +193,47 @@ public class Preguntas : MonoBehaviour
         if (btn == null) return;
         if (btn.userData == null) return;
         int idx = (int)btn.userData;
-        preguntasRespondidas++;
         OnReplyButtonClicked(idx);
     }
 
     public void botonIncorrecto(int index)
     {
         vidas--;
-        uiScript.ActualizarVidas(vidas, vidasMaximas); // Actualizar pantalla
+        uiScript.ActualizarVidas(vidas, vidasMaximas);
         OnFallo?.Invoke();
     }
 
     public void botonCorrecto(int index)
     {
         aciertosAcumulados++;
-        uiScript.ActualizarProgreso(aciertosAcumulados, maxAciertos); // Actualizar pantalla
+        uiScript.ActualizarProgreso(aciertosAcumulados, maxAciertos);
         OnAcierto?.Invoke();
     }
 
     private void CerrarEscena()
     {
+        float segundosTotales = Time.time - tiempoInicio;
+
+        DatosCombateEnviados stats = new DatosCombateEnviados
+        {
+            idEstudiante = GameManager.Instancia.jugadorActivo.id,
+            idNPC = GameManager.Instancia.idEnemigoActual,
+            dificultad = GameManager.Instancia.jugadorActivo.dificultad,
+            fecha_combate = fechaInicioCombate,
+            duracion = segundosTotales,
+            preguntasHechas = preguntasRespondidas,
+            aciertos = aciertosAcumulados
+        };
+
+        string jsonStats = JsonUtility.ToJson(stats, true); // El 'true' es para que se vea ordenado (pretty print)
+        Debug.Log("Estadísticas del Combate:\n" + jsonStats);
+
         if (aciertosAcumulados >= maxAciertos)
         {
             DarRecompensa();
         }
 
-        SceneManager.LoadScene("Mainmap_01");
+        StartCoroutine(EnviarEstadisticasAPI(stats));
     }
 
     private IEnumerator MostrarColoresYEsperar()
@@ -181,20 +243,16 @@ public class Preguntas : MonoBehaviour
         {
             replyButtons[i].SetEnabled(false);
 
-            // Delegamos el color al script de UI
             Color colorResultado = (i == idxPreguntaCorrecta) ? Color.green : Color.red;
             uiScript.AplicarColorBoton(i, colorResultado);
         }
 
-        // 2. Pausa dramática
         yield return new WaitForSeconds(tiempoEspera);
 
-        // 3. Limpiamos los colores usando el método que creamos en CuestionarioUI
         uiScript.LimpiarColores();
 
         isEsperando = false;
 
-        // 4. Siguiente pregunta
         SetupQuestion();
     }
     void DarRecompensa()
@@ -204,7 +262,7 @@ public class Preguntas : MonoBehaviour
 
         foreach (var e in GameManager.Instancia.jugadorActivo.enemigosDerrotados)
         {
-            if (e.id == idBuscado)
+            if (e.id_npc == idBuscado)
             {
                 if (!e.derrotado)
                 {
@@ -220,7 +278,7 @@ public class Preguntas : MonoBehaviour
         {
             GameManager.Instancia.jugadorActivo.monedas += 300;
 
-            Enemigo nuevoEnemigo = new Enemigo { id = idBuscado, derrotado = true };
+            Enemigo nuevoEnemigo = new Enemigo { id_npc = idBuscado, derrotado = true };
 
             var listaTemporal = new List<Enemigo>(GameManager.Instancia.jugadorActivo.enemigosDerrotados);
             listaTemporal.Add(nuevoEnemigo);
@@ -228,5 +286,37 @@ public class Preguntas : MonoBehaviour
 
             Debug.Log($"Nuevo NPC {idBuscado} derrotado. +300 monedas.");
         }
+
+        //SceneManager.LoadScene("Mainmap_01");
     }
+
+
+    IEnumerator EnviarEstadisticasAPI(DatosCombateEnviados datos)
+    {
+        string json = JsonUtility.ToJson(datos);
+
+        using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
+        {
+            byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
+            request.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Error al enviar estadísticas: " + request.error);
+            }
+            else
+            {
+                Debug.Log("Estadísticas enviadas correctamente.");
+            }
+
+            SceneManager.LoadScene("Mainmap_01");
+        }
+    }
+
+
+
 }

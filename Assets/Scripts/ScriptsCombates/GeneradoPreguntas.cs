@@ -37,16 +37,16 @@ public static class GeneradorPreguntas
         switch (op)
         {
             case "suma":
-                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 100 : 1000;
+                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 100 : (dificultad == 3) ? 500 : 1000;
                 break;
             case "resta":
-                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 100 : 1000;
+                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 100 : (dificultad == 3) ? 500 : 1000;;
                 break;
             case "multiplicacion":
-                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 50 : 100;
+                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 50 : (dificultad == 3) ? 100 : 200;
                 break;
             case "division":
-                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 20 : 50;
+                rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 20 : (dificultad == 3) ? 50 : 100;
                 break;
             default:
                 rango = (dificultad == 1) ? 10 : (dificultad == 2) ? 100 : 1000;

@@ -1,3 +1,5 @@
+using System;
+
 [System.Serializable]
 public class DatosJugador
 {
@@ -12,8 +14,8 @@ public class DatosJugador
 [System.Serializable]
 public class Enemigo
 {
-    public int id;
-    public bool derrotado;
+    public int id_npc;
+    public Boolean derrotado;
     public string operacion;
     public string tipo;
     public string nombre;
