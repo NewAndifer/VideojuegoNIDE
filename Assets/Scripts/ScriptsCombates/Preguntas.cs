@@ -11,6 +11,8 @@ using UnityEngine.Networking;
 
 public class Preguntas : MonoBehaviour
 {
+    [Header("Configuración de API")]
+    public string url;
     public UIDocument uiDocument;
     private CuestionarioUI uiScript;
 
@@ -36,13 +38,13 @@ public class Preguntas : MonoBehaviour
     [System.Serializable]
     public struct DatosCombateEnviados
     {
-        public int idUsuario;
+        public int idEstudiante;
         public int idNPC;
-        public string dificultad;
-        public string fechaInicio;
-        public float segundos;
-        public int preguntasContestadas;
+        public int preguntasHechas;
         public int aciertos;
+        public float duracion;
+        public string fecha_combate;
+        public string dificultad;
     }
 
     void Start()
@@ -191,7 +193,6 @@ public class Preguntas : MonoBehaviour
         if (btn == null) return;
         if (btn.userData == null) return;
         int idx = (int)btn.userData;
-        preguntasRespondidas++;
         OnReplyButtonClicked(idx);
     }
 
@@ -215,23 +216,24 @@ public class Preguntas : MonoBehaviour
 
         DatosCombateEnviados stats = new DatosCombateEnviados
         {
-            idUsuario = GameManager.Instancia.jugadorActivo.id,
+            idEstudiante = GameManager.Instancia.jugadorActivo.id,
             idNPC = GameManager.Instancia.idEnemigoActual,
             dificultad = GameManager.Instancia.jugadorActivo.dificultad,
-            fechaInicio = fechaInicioCombate,
-            segundos = segundosTotales,
-            preguntasContestadas = preguntasRespondidas,
+            fecha_combate = fechaInicioCombate,
+            duracion = segundosTotales,
+            preguntasHechas = preguntasRespondidas,
             aciertos = aciertosAcumulados
         };
+
+        string jsonStats = JsonUtility.ToJson(stats, true); // El 'true' es para que se vea ordenado (pretty print)
+        Debug.Log("Estadísticas del Combate:\n" + jsonStats);
 
         if (aciertosAcumulados >= maxAciertos)
         {
             DarRecompensa();
         }
 
-
-
-        //StartCoroutine(EnviarEstadisticasAPI(stats));
+        StartCoroutine(EnviarEstadisticasAPI(stats));
     }
 
     private IEnumerator MostrarColoresYEsperar()
@@ -285,13 +287,12 @@ public class Preguntas : MonoBehaviour
             Debug.Log($"Nuevo NPC {idBuscado} derrotado. +300 monedas.");
         }
 
-        SceneManager.LoadScene("Mainmap_01");
+        //SceneManager.LoadScene("Mainmap_01");
     }
 
 
     IEnumerator EnviarEstadisticasAPI(DatosCombateEnviados datos)
     {
-        string url = "TU_URL_DE_API_AQUI/combates";
         string json = JsonUtility.ToJson(datos);
 
         using (UnityWebRequest request = new UnityWebRequest(url, "POST"))
@@ -312,7 +313,7 @@ public class Preguntas : MonoBehaviour
                 Debug.Log("Estadísticas enviadas correctamente.");
             }
 
-            //SceneManager.LoadScene("Mainmap_01");
+            SceneManager.LoadScene("Mainmap_01");
         }
     }
 

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int idEnemigoActual;
     public string operacionActual;
     public string tipoNPCActual;
+    public Vector3 posicionRetornoMapa;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void CrearInstancia()

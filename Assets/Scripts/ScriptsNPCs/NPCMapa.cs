@@ -4,17 +4,17 @@ using UnityEngine.SceneManagement;
 public class NPCMapa : MonoBehaviour
 {
     [Header("Identificador de Base de Datos")]
-    public int idNPC; 
+    public int idNPC;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            ConfigurarYEntrarACombate();
+            ConfigurarYEntrarACombate(collision.gameObject);
         }
     }
 
-    private void ConfigurarYEntrarACombate()
+    private void ConfigurarYEntrarACombate(GameObject jugador)
     {
         if (GameManager.Instancia == null || GameManager.Instancia.jugadorActivo == null)
         {
@@ -22,9 +22,10 @@ public class NPCMapa : MonoBehaviour
             return;
         }
 
-        // Buscamos los datos del NPC en el array que obtuviste del login
+        GameManager.Instancia.posicionRetornoMapa = jugador.transform.position + new Vector3(0, -1.5f, 0);
+
         var arrayNPCs = GameManager.Instancia.jugadorActivo.enemigosDerrotados;
-        
+
         bool encontrado = false;
         string tipoEncontrado = "";
 
@@ -34,8 +35,8 @@ public class NPCMapa : MonoBehaviour
             {
                 GameManager.Instancia.idEnemigoActual = datosEnemigo.id_npc;
                 GameManager.Instancia.operacionActual = datosEnemigo.operacion;
-                GameManager.Instancia.tipoNPCActual = datosEnemigo.tipo; 
-                
+                GameManager.Instancia.tipoNPCActual = datosEnemigo.tipo;
+
                 tipoEncontrado = datosEnemigo.tipo;
                 Debug.Log($"NPC Encontrado: {datosEnemigo.nombre}. Iniciando combate de {datosEnemigo.operacion}");
                 encontrado = true;
@@ -43,9 +44,9 @@ public class NPCMapa : MonoBehaviour
             }
         }
 
-        if (encontrado )
+        if (encontrado)
         {
-           string tipoNormalizado = tipoEncontrado.Trim().ToLower();
+            string tipoNormalizado = tipoEncontrado.Trim().ToLower();
 
             if (tipoNormalizado == "boss")
             {

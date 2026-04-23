@@ -109,6 +109,10 @@ PrefabInstance:
       propertyPath: operacion
       value: suma
       objectReference: {fileID: 0}
+    - target: {fileID: 1379619196543875349, guid: 568d4ff366eb745d0850bfadde8f528e, type: 3}
+      propertyPath: maxAciertos
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3436009689684229181, guid: 568d4ff366eb745d0850bfadde8f528e, type: 3}
       propertyPath: m_Name
       value: UICombate

@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c7a31991d05843d48124a57a74f636b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: JuegoPrincipal::Preguntas
+  url: https://j6jij2hqtqm2baazplqbltnquu0amkcx.lambda-url.us-east-1.on.aws/juego/addCombate
   uiDocument: {fileID: 4162019419952101837}
   dificultad: 1
   operacion: suma
