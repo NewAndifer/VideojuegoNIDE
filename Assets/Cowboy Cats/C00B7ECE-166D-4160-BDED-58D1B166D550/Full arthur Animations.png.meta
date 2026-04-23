@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: ef01721657ba045669e4b750cbfc7006
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3469101242846432849
+    second: Full arthur Animations_0
+  - first:
+      213: 3360863550903614745
+    second: Full arthur Animations_1
+  - first:
+      213: 5944907866513724299
+    second: Full arthur Animations_2
+  - first:
+      213: 8722602248227436887
+    second: Full arthur Animations_3
+  - first:
+      213: 578441627077792199
+    second: Full arthur Animations_4
+  - first:
+      213: 5142947745083431842
+    second: Full arthur Animations_5
+  - first:
+      213: -8748406070754984791
+    second: Full arthur Animations_6
+  - first:
+      213: -5471383453464601325
+    second: Full arthur Animations_7
+  - first:
+      213: -2293496901403607864
+    second: Full arthur Animations_8
+  - first:
+      213: 3995918318583127248
+    second: Full arthur Animations_9
+  - first:
+      213: -2044560383074255567
+    second: Full arthur Animations_10
+  - first:
+      213: 725996531177530548
+    second: Full arthur Animations_11
+  - first:
+      213: 6178734964828055854
+    second: Full arthur Animations_12
+  - first:
+      213: 5686137183538926597
+    second: Full arthur Animations_13
+  - first:
+      213: 5709223552252061070
+    second: Full arthur Animations_14
+  - first:
+      213: 8417369912526033199
+    second: Full arthur Animations_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Full arthur Animations_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 74
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa1b54abcc64bdfc0800000000000000
+      internalID: -3469101242846432849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 74
+        width: 28
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91dfa2ac79f24ae20800000000000000
+      internalID: 3360863550903614745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 74
+        width: 28
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b83d9f5053e808250800000000000000
+      internalID: 5944907866513724299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_3
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 74
+        width: 28
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 759be9ac788ec0970800000000000000
+      internalID: 8722602248227436887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 71
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c155495899070800800000000000000
+      internalID: 578441627077792199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_5
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 71
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ab1814c9bb6f5740800000000000000
+      internalID: 5142947745083431842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_6
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 71
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac37c9970b679680800000000000000
+      internalID: -8748406070754984791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_7
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 72
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31dda4adcbdb114b0800000000000000
+      internalID: -5471383453464601325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_8
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 7
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ccf06a38bcdb20e0800000000000000
+      internalID: -2293496901403607864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_9
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 8
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dc9f9a1a8a547730800000000000000
+      internalID: 3995918318583127248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_10
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 8
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13db5050a2340a3e0800000000000000
+      internalID: -2044560383074255567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_11
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 7
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b4a005aff1431a00800000000000000
+      internalID: 725996531177530548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_12
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 8
+        width: 28
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e29acd3d6b64fb550800000000000000
+      internalID: 6178734964828055854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_13
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 7
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5045af854a739ee40800000000000000
+      internalID: 5686137183538926597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_14
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 7
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e85274f629c3b3f40800000000000000
+      internalID: 5709223552252061070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Full arthur Animations_15
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 7
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f21dc2b965180d470800000000000000
+      internalID: 8417369912526033199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Full arthur Animations_0: -3469101242846432849
+      Full arthur Animations_1: 3360863550903614745
+      Full arthur Animations_10: -2044560383074255567
+      Full arthur Animations_11: 725996531177530548
+      Full arthur Animations_12: 6178734964828055854
+      Full arthur Animations_13: 5686137183538926597
+      Full arthur Animations_14: 5709223552252061070
+      Full arthur Animations_15: 8417369912526033199
+      Full arthur Animations_2: 5944907866513724299
+      Full arthur Animations_3: 8722602248227436887
+      Full arthur Animations_4: 578441627077792199
+      Full arthur Animations_5: 5142947745083431842
+      Full arthur Animations_6: -8748406070754984791
+      Full arthur Animations_7: -5471383453464601325
+      Full arthur Animations_8: -2293496901403607864
+      Full arthur Animations_9: 3995918318583127248
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
