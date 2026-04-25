@@ -3350,6 +3350,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2384115214110088991, guid: 05fb118b226df4ccda0971d3bdb52c42, type: 3}
+      propertyPath: url
+      value: https://zadcg5xn26ho3hqwwdiafr2z3u0pndgb.lambda-url.us-east-1.on.aws/juego/addCombate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384115214110088991, guid: 05fb118b226df4ccda0971d3bdb52c42, type: 3}
       propertyPath: vidas
       value: 5
       objectReference: {fileID: 0}

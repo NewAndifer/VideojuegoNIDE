@@ -1,0 +1,22 @@
+:root {
+}
+
+.contenedorPrincipal {
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+}
+
+.contenedorLetreros {
+    width: 30%;
+}
+
+.letreros {
+    font-size: 60px;
+    -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&guid=71a55b0538d48354b87afab937af74d2&type=3#BoldPixels");
+    background-image: url("project://database/Assets/Cowboy%20Cats/C00B7ECE-166D-4160-BDED-58D1B166D550/Untitled%204.png?fileID=-1818288207410235511&guid=59d2a3247597742898c7890e05542e58&type=3#Untitled 4_4");
+    padding-top: 30px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+}

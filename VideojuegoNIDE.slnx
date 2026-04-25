@@ -28,7 +28,6 @@
   <Project Path="Unity.Splines.Editor.csproj" />
   <Project Path="Unity.PerformanceTesting.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.Editor.csproj" />
-  <Project Path="JuegoPrincipal.csproj" />
   <Project Path="PsdPlugin.csproj" />
   <Project Path="Unity.2D.IK.Editor.csproj" />
   <Project Path="Unity.InternalAPIEngineBridge.001.csproj" />
@@ -43,6 +42,7 @@
   <Project Path="Unity.SysrootPackage.Editor.csproj" />
   <Project Path="Tests.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />
+  <Project Path="JuegoPrincipal.csproj" />
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="Unity.2D.Tilemap.Extras.csproj" />
   <Project Path="Unity.2D.Animation.Runtime.csproj" />

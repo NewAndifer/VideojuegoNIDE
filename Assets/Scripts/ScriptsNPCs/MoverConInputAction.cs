@@ -35,14 +35,13 @@ public class Mover4Direcciones : MonoBehaviour
     public float velocidadX = 5f;
     public float velocidadY = 5f;
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         accionMover.Enable();
-
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -54,7 +53,6 @@ public class Mover4Direcciones : MonoBehaviour
 
         rb.linearVelocityX = movimiento.x * velocidadX; 
         rb.linearVelocityY = movimiento.y * velocidadY; 
-
         ActualizarAnimaciones(movimiento);
     }
 
@@ -65,7 +63,5 @@ public class Mover4Direcciones : MonoBehaviour
         animator.SetFloat("velY", movimiento.y); 
         animator.SetFloat("velocidad", movimiento.magnitude);
 
-        //if (movimiento.x < -0.1f) spriteRenderer.flipX = true;
-        //else if (movimiento.x > 0.1f) spriteRenderer.flipX = false;
     }
 }

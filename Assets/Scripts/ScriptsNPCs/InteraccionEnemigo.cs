@@ -32,11 +32,11 @@ public class InteraccionEnemigo : MonoBehaviour
 
             if (tipoNormalizado == "boss")
             {
-                SceneManager.LoadScene("BossCombat");
+                //SceneManager.LoadScene("BossCombat");
             }
             else
             {
-                SceneManager.LoadScene(nombreEscenaFinal);
+                //SceneManager.LoadScene(nombreEscenaFinal);
             }
         }
     }

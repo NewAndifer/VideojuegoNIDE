@@ -294,6 +294,9 @@ MonoBehaviour:
     enemigosDerrotados: []
   idEnemigoActual: 0
   operacionActual: 
+  tipoNPCActual: 
+  nombreNPCActual: 
+  posicionRetornoMapa: {x: 0, y: 0, z: 0}
 --- !u!4 &1178457741
 Transform:
   m_ObjectHideFlags: 0
@@ -468,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e2836d943b04b48b05b30e38f3dba2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: JuegoPrincipal::APIIRegistro
-  url: https://j6jij2hqtqm2baazplqbltnquu0amkcx.lambda-url.us-east-1.on.aws/loginJuego
+  url: https://zadcg5xn26ho3hqwwdiafr2z3u0pndgb.lambda-url.us-east-1.on.aws/loginJuego
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

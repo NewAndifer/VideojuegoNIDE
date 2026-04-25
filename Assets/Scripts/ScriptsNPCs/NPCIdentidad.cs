@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemigoIdentidad : MonoBehaviour
+public class NPCIdentidad : MonoBehaviour
 {
     [Header("Configuración de Base de Datos")]
     public int idDeBaseDeDatos; 
@@ -13,6 +13,15 @@ public class EnemigoIdentidad : MonoBehaviour
     void Start()
     {
         ConsultarEstado();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            
+        }
+        
     }
 
     public void ConsultarEstado()

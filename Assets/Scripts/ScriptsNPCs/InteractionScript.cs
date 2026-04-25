@@ -59,7 +59,6 @@ public class NPCInteraction : MonoBehaviour
 
     void Update()
     {
-        // Detectamos la tecla E usando el Nuevo Sistema de Entrada
         if (isPlayerInRange && Keyboard.current.eKey.wasPressedThisFrame)
         {
             Debug.Log("--- [INPUT] Se presionó la tecla E");

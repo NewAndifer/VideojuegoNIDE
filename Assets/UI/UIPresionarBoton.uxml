@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UIPresionarBoton.uss?fileID=7433441132597879392&amp;guid=3f89161c04e49435b92be1d80ab908ea&amp;type=3#UIPresionarBoton"/>
+    <ui:VisualElement name="ContenedorPrincipal" picking-mode="Ignore" class="contenedorPrincipal">
+        <ui:VisualElement name="ContenedorLetreros" enabled="true" class="contenedorLetreros" style="padding-top: 30px; padding-right: 30px; padding-bottom: 30px; padding-left: 30px;">
+            <ui:Label text="Presiona E para &#10;hablar" name="LetreroDialogo" focusable="false" enabled="true" class="letreros"/>
+            <ui:Label text="Presiona R para&#10; combatir" name="LetreroCombate" class="letreros"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -6,23 +6,24 @@ using UnityEngine.InputSystem;
 public class Dialogue : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueMark;
-    [SerializeField, TextArea(4, 6)] private string[] dialogueLines;
     [SerializeField] private GameObject dialoguePanel;
-    [SerializeField] TMP_Text dialogueText;
+    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private TMP_Text npcNameText;
+
+    [Header("Configuración de Textos")]
+    [SerializeField, TextArea(4, 6)] private string[] lineasNormales;
+    [SerializeField, TextArea(4, 6)] private string[] lineasDerrotado;
+    
+    private string[] lineasActivas;
 
     [Header("Input")]
     [SerializeField] private InputAction interactAction;
-
 
     private bool isPlayerInRange;
     private bool didDialogueStart;
     private int lineIndex = 0;
     private float typingTime = 0.05f;
-
-    string nombreReal;
-
-
-
+    private string lineaActualProcesada;
 
     private void OnEnable() => interactAction.Enable();
     private void OnDisable() => interactAction.Disable();
@@ -31,35 +32,54 @@ public class Dialogue : MonoBehaviour
     {
         if (isPlayerInRange && interactAction.WasPressedThisFrame())
         {
-            if (!didDialogueStart)
-            {
-                StartDialogue();
-            }
+            if (!didDialogueStart) StartDialogue();
             else
             {
-                if (dialogueText.text == dialogueLines[lineIndex])
-                {
-                    NextDialogueLine();
-                }
+                if (dialogueText.text == lineaActualProcesada) NextDialogueLine();
                 else
                 {
                     StopAllCoroutines();
-
-                    dialogueText.text = dialogueLines[lineIndex];
+                    dialogueText.text = lineaActualProcesada;
                 }
             }
         }
     }
 
-
-
     private void StartDialogue()
     {
+        NPCMapa mapa = GetComponentInParent<NPCMapa>();
+        string nombreAVisualizar = "Desconocido";
+        bool estaDerrotado = false;
+
+        if (mapa != null)
+        {
+            if (mapa.idNPC < 1000)
+            {
+                // CORRECCIÓN AQUÍ:
+                if (GameManager.Instancia.jugadorActivo != null && GameManager.Instancia.jugadorActivo.enemigosDerrotados != null)
+                {
+                    var datos = System.Array.Find(GameManager.Instancia.jugadorActivo.enemigosDerrotados, e => e.id_npc == mapa.idNPC);
+                    if (datos != null)
+                    {
+                        nombreAVisualizar = datos.nombre;
+                        estaDerrotado = datos.derrotado;
+                    }
+                }
+            }
+            else
+            {
+                nombreAVisualizar = "Aldeano"; 
+            }
+        }
+
+        if (npcNameText != null) npcNameText.text = nombreAVisualizar;
+        lineasActivas = estaDerrotado ? lineasDerrotado : lineasNormales;
+
+        if (lineasActivas == null || lineasActivas.Length == 0) return;
+
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
-        dialogueMark.SetActive(false);
         lineIndex = 0;
-
         BloquearMovimiento(true);
         StartCoroutine(ShowLine());
     }
@@ -67,69 +87,49 @@ public class Dialogue : MonoBehaviour
     private void NextDialogueLine()
     {
         lineIndex++;
-        if (lineIndex < dialogueLines.Length)
-        {
-            StartCoroutine(ShowLine());
-        }
-        else
-        {
-            CerrarDialogo();
-        }
-
+        if (lineIndex < lineasActivas.Length) StartCoroutine(ShowLine());
+        else CerrarDialogo();
     }
 
     private void CerrarDialogo()
     {
         didDialogueStart = false;
         dialoguePanel.SetActive(false);
-        dialogueMark.SetActive(true);
+        if(dialogueMark != null) dialogueMark.SetActive(true);
         BloquearMovimiento(false);
     }
 
     private IEnumerator ShowLine()
     {
         dialogueText.text = string.Empty;
+        string lineaOriginal = lineasActivas[lineIndex];
+        string nombreReal = (GameManager.Instancia.jugadorActivo != null) ? GameManager.Instancia.jugadorActivo.nombre : "Jugador";
+        string npcNombre = npcNameText != null ? npcNameText.text : "NPC";
 
-        string lineaOriginal = dialogueLines[lineIndex];
+        lineaActualProcesada = lineaOriginal.Replace("{PlayerName}", nombreReal).Replace("{NPCName}", npcNombre);
 
-        string nombreReal = "Desconocido";
-
-        if (GameManager.Instancia != null && GameManager.Instancia.jugadorActivo != null)
-        {
-            nombreReal = GameManager.Instancia.jugadorActivo.nombre;
-        }
-
-        string lineaProcesada = lineaOriginal.Replace("{PlayerName}", nombreReal);
-
-
-        foreach (char ch in lineaProcesada)
+        foreach (char ch in lineaActualProcesada)
         {
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(typingTime);
-
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            dialogueMark.SetActive(true);
-            Debug.Log("Se puede iniciar un dialogo");
-
+            if(dialogueMark != null) dialogueMark.SetActive(false);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
-
             isPlayerInRange = false;
-            dialogueMark.SetActive(true);
-            Debug.Log("No se puede iniciar un dialogo");
+            if(dialogueMark != null) dialogueMark.SetActive(true);
         }
     }
 
@@ -138,11 +138,20 @@ public class Dialogue : MonoBehaviour
         GameObject jugador = GameObject.FindWithTag("Player");
         if (jugador != null)
         {
-
             var mov = jugador.GetComponent<Mover4Direcciones>();
-            if (mov != null) mov.enabled = !bloquear;
+            var anim = jugador.GetComponent<Animator>();
+            if (mov != null && anim != null)
+            {
+                mov.rb.linearVelocity = Vector2.zero;
+                if (bloquear)
+                {
+                    anim.SetFloat("velX", 0);
+                    anim.SetFloat("velY", 0);
+                    anim.SetFloat("velocidad", 0);
+                    anim.SetBool("animAct", false);
+                }
+                mov.enabled = !bloquear;
+            }
         }
     }
-
-
 }

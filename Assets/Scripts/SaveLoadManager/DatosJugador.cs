@@ -9,6 +9,7 @@ public class DatosJugador
     public int monedas;
     public string dificultad;
     public Enemigo[] enemigosDerrotados;
+
 }
 
 [System.Serializable]

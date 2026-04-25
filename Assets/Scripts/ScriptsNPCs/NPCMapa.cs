@@ -10,19 +10,34 @@ public class NPCMapa : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ConfigurarYEntrarACombate(collision.gameObject);
+            ConfigurarNPC(collision.gameObject);
         }
     }
 
-    private void ConfigurarYEntrarACombate(GameObject jugador)
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (GameManager.Instancia != null && GameManager.Instancia.jugadorActivo != null)
+            {
+                GameManager.Instancia.idEnemigoActual = -1;
+                GameManager.Instancia.operacionActual = "";
+                GameManager.Instancia.tipoNPCActual = "";
+                GameManager.Instancia.nombreNPCActual = "";
+            }
+        }
+
+    }
+
+    private void ConfigurarNPC(GameObject jugador)
     {
         if (GameManager.Instancia == null || GameManager.Instancia.jugadorActivo == null)
         {
-            Debug.LogError("No hay datos de jugador o GameManager.");
+            Debug.LogError("No hay datos de jugador o GameManager ff papa.");
             return;
         }
 
-        GameManager.Instancia.posicionRetornoMapa = jugador.transform.position + new Vector3(0, -1.5f, 0);
+        //GameManager.Instancia.posicionRetornoMapa = jugador.transform.position + new Vector3(0, -1.5f, 0);
 
         var arrayNPCs = GameManager.Instancia.jugadorActivo.enemigosDerrotados;
 
@@ -36,6 +51,7 @@ public class NPCMapa : MonoBehaviour
                 GameManager.Instancia.idEnemigoActual = datosEnemigo.id_npc;
                 GameManager.Instancia.operacionActual = datosEnemigo.operacion;
                 GameManager.Instancia.tipoNPCActual = datosEnemigo.tipo;
+                GameManager.Instancia.nombreNPCActual = datosEnemigo.nombre;
 
                 tipoEncontrado = datosEnemigo.tipo;
                 Debug.Log($"NPC Encontrado: {datosEnemigo.nombre}. Iniciando combate de {datosEnemigo.operacion}");
@@ -46,6 +62,7 @@ public class NPCMapa : MonoBehaviour
 
         if (encontrado)
         {
+            /*
             string tipoNormalizado = tipoEncontrado.Trim().ToLower();
 
             if (tipoNormalizado == "boss")
@@ -58,6 +75,7 @@ public class NPCMapa : MonoBehaviour
                 Debug.Log("Entrando a combate de Bandido");
                 SceneManager.LoadScene("BanditCombat");
             }
+            */
         }
         else
         {
