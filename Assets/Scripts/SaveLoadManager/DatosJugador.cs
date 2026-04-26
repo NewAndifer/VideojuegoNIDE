@@ -10,6 +10,8 @@ public class DatosJugador
     public string dificultad;
     public Enemigo[] enemigosDerrotados;
 
+    public Puerta[] puertasAbiertas;
+
 }
 
 [System.Serializable]
@@ -20,4 +22,11 @@ public class Enemigo
     public string operacion;
     public string tipo;
     public string nombre;
+}
+
+[System.Serializable]
+public class Puerta
+{
+    public int id_puerta;
+    public Boolean abierta;
 }

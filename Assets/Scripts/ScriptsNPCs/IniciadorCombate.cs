@@ -24,23 +24,20 @@ public class IniciadorCombate : MonoBehaviour
 
     private void LanzarCombate()
     {
-        NPCMapa mapa = GetComponentInParent<NPCMapa>();
-        if (mapa == null || mapa.idNPC >= 1000) return;
+        NPCMapa npc = GetComponentInParent<NPCMapa>();
+        if (npc == null || npc.idNPC >= 1000 || GameManager.Instancia == null) return;
 
-        var datos = System.Array.Find(GameManager.Instancia.jugadorActivo.enemigosDerrotados, e => e.id_npc == mapa.idNPC);
-
-        if (datos != null)
+        if (npc != null)
         {
-            // --- AQUÍ ESTÁ LA CLAVE ---
-            // Sincronizamos TODO el perfil del enemigo en el GameManager
-            GameManager.Instancia.idEnemigoActual = datos.id_npc;
-            GameManager.Instancia.operacionActual = datos.operacion; // ¡Esto faltaba!
-            GameManager.Instancia.tipoNPCActual = datos.tipo;       // ¡Esto también!
-            GameManager.Instancia.nombreNPCActual = datos.nombre;
+           
+            GameManager.Instancia.idEnemigoActual = npc.idNPC;
+            GameManager.Instancia.operacionActual = npc.operacion; // ¡Esto faltaba!
+            GameManager.Instancia.tipoNPCActual = npc.tipo;       // ¡Esto también!
+            GameManager.Instancia.nombreNPCActual = npc.nombre;
 
             GameManager.Instancia.posicionRetornoMapa = GameObject.FindWithTag("Player").transform.position;
 
-            string escena = datos.tipo.ToLower() == "boss" ? "BossCombat" : "BanditCombat";
+            string escena = npc.tipo.ToLower() == "boss" ? "BossCombat" : "BanditCombat";
             SceneManager.LoadScene(escena);
         }
     }
