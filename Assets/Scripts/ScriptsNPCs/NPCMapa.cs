@@ -11,19 +11,26 @@ public class NPCMapa : MonoBehaviour
     public string nombre = "Desconocido";
     public bool derrotado = false;
 
+    [Header("Referencia UI")]
+    [SerializeField] private LetreroDinamico miLetrero;
 
     void Start()
     {
         DescargarDatosNPC();
+        // Si no arrastraste el letrero en el inspector, lo buscamos en los hijos
+        if (miLetrero == null) miLetrero = GetComponentInChildren<LetreroDinamico>();
     }
 
-
-/*
+    // --- ¡DESCOMENTAMOS ESTO! ---
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && miLetrero != null)
         {
-            SetDatosEnGameManager();
+            miLetrero.Limpiar(); // Limpiamos UNA sola vez al entrar al rango
+
+            // Agregamos ambos sin limpiar entre ellos
+            miLetrero.AgregarOpcion("E", "hablar");
+            miLetrero.AgregarOpcion("R", "combatir");
         }
     }
 
@@ -31,19 +38,27 @@ public class NPCMapa : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Solo limpiamos si el ID que se está borrando es el MÍO
-            // Esto evita que al salir de un trigger borres los datos de otro NPC cercano
-            if (GameManager.Instancia != null && GameManager.Instancia.idEnemigoActual == idNPC)
-            {
-                GameManager.Instancia.idEnemigoActual = -1;
-                GameManager.Instancia.operacionActual = "";
-                GameManager.Instancia.tipoNPCActual = "";
-                GameManager.Instancia.nombreNPCActual = "";
-            }
+            LimpiarDatosGameManager();
+            if (miLetrero != null) miLetrero.Limpiar();
         }
     }
 
-    */
+    private void SetDatosEnGameManager()
+    {
+        if (GameManager.Instancia == null) return;
+        GameManager.Instancia.idEnemigoActual = idNPC;
+        GameManager.Instancia.operacionActual = operacion;
+        GameManager.Instancia.tipoNPCActual = tipo;
+        GameManager.Instancia.nombreNPCActual = nombre;
+    }
+
+    private void LimpiarDatosGameManager()
+    {
+        if (GameManager.Instancia != null && GameManager.Instancia.idEnemigoActual == idNPC)
+        {
+            GameManager.Instancia.idEnemigoActual = -1;
+        }
+    }
 
     private void DescargarDatosNPC()
     {
@@ -73,19 +88,19 @@ public class NPCMapa : MonoBehaviour
         Debug.LogWarning($"NPC ID {idNPC} no encontrado en la DB del jugador.");
     }
 
-   /*  private void SetDatosEnGameManager()
-    {
-        if (GameManager.Instancia == null)
-        {
-            Debug.LogError("No hay datos de jugador o GameManager ff papa.");
-            return;
-        }
-        GameManager.Instancia.idEnemigoActual = idNPC;
-        GameManager.Instancia.operacionActual = operacion;
-        GameManager.Instancia.tipoNPCActual = tipo;
-        GameManager.Instancia.nombreNPCActual = nombre;
+    /*  private void SetDatosEnGameManager()
+     {
+         if (GameManager.Instancia == null)
+         {
+             Debug.LogError("No hay datos de jugador o GameManager ff papa.");
+             return;
+         }
+         GameManager.Instancia.idEnemigoActual = idNPC;
+         GameManager.Instancia.operacionActual = operacion;
+         GameManager.Instancia.tipoNPCActual = tipo;
+         GameManager.Instancia.nombreNPCActual = nombre;
 
-        Debug.Log($"GameManager listo para combatir contra: {nombre} ({operacion})");
-    }
-    */
+         Debug.Log($"GameManager listo para combatir contra: {nombre} ({operacion})");
+     }
+     */
 }

@@ -23,9 +23,6 @@ public class CartelesNPC : MonoBehaviour
         {
             miManager.Limpiar(); // Limpia botones viejos
 
-            miManager.AjustarLado(mostrarDerecha);
-
-
             miManager.AgregarOpcion("E", "hablar");
 
             if (bandido)
