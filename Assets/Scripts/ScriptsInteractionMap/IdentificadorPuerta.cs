@@ -20,6 +20,9 @@ public class IdentificadorPuerta : MonoBehaviour
     [Header("Input")]
     [SerializeField] private InputAction interactAction;
 
+    [Header("API ActualizarMonedas")]
+    [SerializeField] private ActualizarMonedasApi apiMonedas;
+
     private bool isPlayerInRange;
 
     private void OnEnable() => interactAction.Enable();
@@ -43,7 +46,6 @@ public class IdentificadorPuerta : MonoBehaviour
 
     private void IntentarCompra()
     {
-        // SEGURIDAD: Checar si el GameManager existe
         if (GameManager.Instancia == null || GameManager.Instancia.jugadorActivo == null)
         {
             Debug.LogError("No hay GameManager o Jugador para cobrar!");
@@ -55,18 +57,12 @@ public class IdentificadorPuerta : MonoBehaviour
         if (jugador.monedas >= costo)
         {
             jugador.monedas -= costo;
-
-            // 2. Marcamos como abierta
             abierta = true;
-
-            // 3. Actualizamos la "Base de Datos" (el array del jugador)
             ActualizarPuertaEnData();
-
-            // 4. Cambiamos los GameObjects (apaga madera, prende paso libre)
             SetEstadosPuertas();
-
-            // 5. Limpiamos el letrero para que no flote nada en el aire
             if (miLetrero != null) miLetrero.Limpiar();
+
+            if (apiMonedas != null) StartCoroutine(apiMonedas.EnviarMonedasAPI());
 
             Debug.Log($"Puerta {idPuerta} desbloqueada. Monedas restantes: {jugador.monedas}");
         }
@@ -77,7 +73,7 @@ public class IdentificadorPuerta : MonoBehaviour
             {
                 // Mandamos "R" como tecla y el mensaje exacto que quieres como acción
                 // El 'true' al final fuerza la limpieza para que NO se encimen
-miLetrero.AgregarOpcion("", "Monedas insuficientes", Color.white, true);
+                miLetrero.AgregarOpcion("", "Monedas insuficientes", Color.white, true);
 
                 // Regresa al texto normal después de 2 segundos
                 Invoke("RestaurarLetreroNormal", 2f);
@@ -122,18 +118,18 @@ miLetrero.AgregarOpcion("", "Monedas insuficientes", Color.white, true);
     private void DescargarDatosPuerta()
     {
         if (idPuerta < 0 || GameManager.Instancia?.jugadorActivo == null) return;
-        foreach (var p in GameManager.Instancia.jugadorActivo.puertasAbiertas)
+        foreach (var p in GameManager.Instancia.jugadorActivo.puertas)
         {
-            if (p.id_puerta == idPuerta) { abierta = p.abierta; break; }
+            if (p.id_puerta == idPuerta) { abierta = p.esta_abierta; break; }
         }
     }
 
     private void ActualizarPuertaEnData()
     {
-        List<Puerta> lista = new List<Puerta>(GameManager.Instancia.jugadorActivo.puertasAbiertas);
+        List<Puerta> lista = new List<Puerta>(GameManager.Instancia.jugadorActivo.puertas);
         bool encontrada = false;
-        foreach (var p in lista) { if (p.id_puerta == idPuerta) { p.abierta = true; encontrada = true; break; } }
-        if (!encontrada) lista.Add(new Puerta { id_puerta = idPuerta, abierta = true });
-        GameManager.Instancia.jugadorActivo.puertasAbiertas = lista.ToArray();
+        foreach (var p in lista) { if (p.id_puerta == idPuerta) { p.esta_abierta = true; encontrada = true; break; } }
+        if (!encontrada) lista.Add(new Puerta { id_puerta = idPuerta, esta_abierta = true });
+        GameManager.Instancia.jugadorActivo.puertas = lista.ToArray();
     }
 }

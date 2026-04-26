@@ -10,7 +10,7 @@ public class DatosJugador
     public string dificultad;
     public Enemigo[] enemigosDerrotados;
 
-    public Puerta[] puertasAbiertas;
+    public Puerta[] puertas;
 
 }
 
@@ -28,5 +28,5 @@ public class Enemigo
 public class Puerta
 {
     public int id_puerta;
-    public Boolean abierta;
+    public Boolean esta_abierta;
 }

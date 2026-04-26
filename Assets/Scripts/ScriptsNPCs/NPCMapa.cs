@@ -17,7 +17,6 @@ public class NPCMapa : MonoBehaviour
     void Start()
     {
         DescargarDatosNPC();
-        // Si no arrastraste el letrero en el inspector, lo buscamos en los hijos
         if (miLetrero == null) miLetrero = GetComponentInChildren<LetreroDinamico>();
     }
 
@@ -26,9 +25,8 @@ public class NPCMapa : MonoBehaviour
     {
         if (collision.CompareTag("Player") && miLetrero != null)
         {
-            miLetrero.Limpiar(); // Limpiamos UNA sola vez al entrar al rango
+            miLetrero.Limpiar(); 
 
-            // Agregamos ambos sin limpiar entre ellos
             miLetrero.AgregarOpcion("E", "hablar");
             miLetrero.AgregarOpcion("R", "combatir");
         }
@@ -84,23 +82,6 @@ public class NPCMapa : MonoBehaviour
                 return;
             }
         }
-
         Debug.LogWarning($"NPC ID {idNPC} no encontrado en la DB del jugador.");
     }
-
-    /*  private void SetDatosEnGameManager()
-     {
-         if (GameManager.Instancia == null)
-         {
-             Debug.LogError("No hay datos de jugador o GameManager ff papa.");
-             return;
-         }
-         GameManager.Instancia.idEnemigoActual = idNPC;
-         GameManager.Instancia.operacionActual = operacion;
-         GameManager.Instancia.tipoNPCActual = tipo;
-         GameManager.Instancia.nombreNPCActual = nombre;
-
-         Debug.Log($"GameManager listo para combatir contra: {nombre} ({operacion})");
-     }
-     */
 }

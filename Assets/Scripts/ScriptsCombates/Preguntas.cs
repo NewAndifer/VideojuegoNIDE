@@ -16,6 +16,9 @@ public class Preguntas : MonoBehaviour
     public UIDocument uiDocument;
     private CuestionarioUI uiScript;
 
+    [Header("API ActualizarMonedas")]
+    [SerializeField] private ActualizarMonedasApi apiMonedas;
+
     public int dificultad = 1;
     public string operacion = "suma";
     public Button[] replyButtons;
@@ -258,38 +261,47 @@ public class Preguntas : MonoBehaviour
     void DarRecompensa()
     {
         int idBuscado = GameManager.Instancia.idEnemigoActual;
-        bool encontrado = false;
+        var jugador = GameManager.Instancia.jugadorActivo;
 
-        foreach (var e in GameManager.Instancia.jugadorActivo.enemigosDerrotados)
+        // 1. Buscamos el índice para poder modificarlo directamente (evita error de structs)
+        int index = -1;
+        for (int i = 0; i < jugador.enemigosDerrotados.Length; i++)
         {
-            if (e.id_npc == idBuscado)
+            if (jugador.enemigosDerrotados[i].id_npc == idBuscado)
             {
-                if (!e.derrotado)
-                {
-                    GameManager.Instancia.jugadorActivo.monedas += 300;
-                    e.derrotado = true;
-                }
-                encontrado = true;
+                index = i;
                 break;
             }
         }
 
-        if (!encontrado)
+        // 2. Lógica centralizada
+        if (index != -1)
         {
-            GameManager.Instancia.jugadorActivo.monedas += 300;
-
+            if (!jugador.enemigosDerrotados[index].derrotado)
+            {
+                SumarMonedas(300);
+                jugador.enemigosDerrotados[index].derrotado = true;
+            }
+        }
+        else
+        {
+            SumarMonedas(300);
+            // Agregar al array (Considera cambiar esto a List en el modelo de datos)
             Enemigo nuevoEnemigo = new Enemigo { id_npc = idBuscado, derrotado = true };
-
-            var listaTemporal = new List<Enemigo>(GameManager.Instancia.jugadorActivo.enemigosDerrotados);
-            listaTemporal.Add(nuevoEnemigo);
-            GameManager.Instancia.jugadorActivo.enemigosDerrotados = listaTemporal.ToArray();
-
-            Debug.Log($"Nuevo NPC {idBuscado} derrotado. +300 monedas.");
+            var listaTemporal = new List<Enemigo>(jugador.enemigosDerrotados) { nuevoEnemigo };
+            jugador.enemigosDerrotados = listaTemporal.ToArray();
         }
 
-        //SceneManager.LoadScene("Mainmap_01");
+        // 3. Sincronizar con API
+        if (apiMonedas != null) StartCoroutine(apiMonedas.EnviarMonedasAPI());
     }
 
+    // Método auxiliar para no repetir código
+    void SumarMonedas(int cantidad)
+    {
+        GameManager.Instancia.jugadorActivo.monedas += cantidad;
+        Debug.Log($"+{cantidad} monedas obtenidas.");
+    }
 
     IEnumerator EnviarEstadisticasAPI(DatosCombateEnviados datos)
     {
