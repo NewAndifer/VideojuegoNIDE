@@ -329,6 +329,9 @@ public class Preguntas : MonoBehaviour
                 Debug.Log("Estadísticas enviadas correctamente.");
             }
 
+            if(ControladorSonido.Instance != null) ControladorSonido.Instance.StopMusica();
+        
+
             SceneManager.LoadScene("Mainmap_01");
         }
     }

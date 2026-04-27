@@ -17,6 +17,8 @@ public class Regresar : MonoBehaviour
 
     private void CerrarEscena()
     {
+        if(ControladorSonido.Instance != null) ControladorSonido.Instance.StopMusica();
+        
         SceneManager.LoadScene("Mainmap_01");
     }
     private void OnDisable()

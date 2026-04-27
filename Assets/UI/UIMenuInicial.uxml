@@ -1,9 +1,18 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/UIMenuPrincipal.uss?fileID=7433441132597879392&amp;guid=07e24bccead7b453b94a0d20027f269d&amp;type=3#UIMenuPrincipal"/>
     <ui:VisualElement name="ContenedorPrincipal" picking-mode="Ignore" class="contenedorPrincipal">
-        <ui:VisualElement name="ContenedorBotones" class="contenedorBotones">
-            <ui:Button text="Iniciar" name="BotonIniciar" class="botones boton"/>
-            <ui:Button text="Salir" name="BotonSalir" class="botones boton"/>
+        <ui:VisualElement name="ContenedorRelleno" class="contenedorTercio"/>
+        <ui:VisualElement name="ContenedorBotones" class="contenedorTercio">
+            <ui:VisualElement name="Botones" class="botones">
+                <ui:Button text="Iniciar" name="BotonIniciar" selectable="true" focusable="true" parse-escape-sequences="false" class="boton"/>
+                <ui:Button text="Configuración" name="BotonConfiguracion" class="boton"/>
+                <ui:Button text="Salir" name="BotonSalir" class="boton"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="ContenedorCreditos" class="contenedorTercio">
+            <ui:VisualElement name="Creditos" class="creditos">
+                <ui:Button text="Créditos" class="boton"/>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

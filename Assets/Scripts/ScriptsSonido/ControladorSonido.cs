@@ -36,7 +36,7 @@ public class ControladorSonido : MonoBehaviour
     public void PlayMusica(AudioClip cancion, bool loop = true)
     {
         if (musicSource.clip == cancion) return;
-        
+
         musicSource.clip = cancion;
         musicSource.loop = loop;
         musicSource.Play();
@@ -52,5 +52,17 @@ public class ControladorSonido : MonoBehaviour
     public void SetVolumenSFX(float sliderValue)
     {
         mainMixer.SetFloat("SFXVol", Mathf.Log10(sliderValue) * 20);
+    }
+
+    public void StopMusica()
+    {
+        musicSource.Stop();
+        musicSource.clip = null;
+    }
+
+    public void StopSFX()
+    {
+        sfxSource.Stop();
+        sfxSource.clip = null;
     }
 }

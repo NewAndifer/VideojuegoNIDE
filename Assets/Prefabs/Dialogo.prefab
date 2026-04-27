@@ -83,9 +83,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: JuegoPrincipal::Dialogue
   dialogueMark: {fileID: 2806433401268177912, guid: b31e6ae40cb73479aa8ab4fef3bcf46e, type: 3}
-  dialogueLines: []
   dialoguePanel: {fileID: 4027561993458968330, guid: dcb9d2bc8acdc4981a53ef829152cc1d, type: 3}
   dialogueText: {fileID: 1817698540068162059, guid: a6bae0fa8cd5a469ca4633a7dd9de963, type: 3}
+  npcNameText: {fileID: 0}
+  lineasNormales: []
+  lineasDerrotado: []
   interactAction:
     m_Name: Interact
     m_Type: 0
@@ -103,6 +105,7 @@ MonoBehaviour:
       m_Action: Interact
       m_Flags: 0
     m_Flags: 0
+  audioAmbienteDialogo: {fileID: 8300000, guid: dc60bc238c6c14f09bf3d6b537fde933, type: 3}
 --- !u!114 &2513624482207356551
 MonoBehaviour:
   m_ObjectHideFlags: 0

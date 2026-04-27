@@ -13,11 +13,14 @@ public class Dialogue : MonoBehaviour
     [Header("Configuración de Textos")]
     [SerializeField, TextArea(4, 6)] private string[] lineasNormales;
     [SerializeField, TextArea(4, 6)] private string[] lineasDerrotado;
-    
+
     private string[] lineasActivas;
 
     [Header("Input")]
     [SerializeField] private InputAction interactAction;
+
+    [Header("Audio del Diálogo")]
+    [SerializeField] private AudioClip audioAmbienteDialogo;
 
     private bool isPlayerInRange;
     private bool didDialogueStart;
@@ -68,7 +71,7 @@ public class Dialogue : MonoBehaviour
             }
             else
             {
-                nombreAVisualizar = "Aldeano"; 
+                nombreAVisualizar = "Aldeano";
             }
         }
 
@@ -79,6 +82,13 @@ public class Dialogue : MonoBehaviour
 
         didDialogueStart = true;
         dialoguePanel.SetActive(true);
+        if (audioAmbienteDialogo != null && ControladorSonido.Instance != null)
+        {
+            // Usamos el canal de música porque ya tiene Loop y se puede detener
+            ControladorSonido.Instance.EjecutarSonido(audioAmbienteDialogo);
+        }
+
+
         lineIndex = 0;
         BloquearMovimiento(true);
         StartCoroutine(ShowLine());
@@ -95,8 +105,10 @@ public class Dialogue : MonoBehaviour
     {
         didDialogueStart = false;
         dialoguePanel.SetActive(false);
-        if(dialogueMark != null) dialogueMark.SetActive(true);
+        if (dialogueMark != null) dialogueMark.SetActive(true);
         BloquearMovimiento(false);
+
+        if(ControladorSonido.Instance != null) ControladorSonido.Instance.StopSFX();
     }
 
     private IEnumerator ShowLine()
@@ -120,7 +132,7 @@ public class Dialogue : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = true;
-            if(dialogueMark != null) dialogueMark.SetActive(false);
+            if (dialogueMark != null) dialogueMark.SetActive(false);
         }
     }
 
@@ -129,7 +141,7 @@ public class Dialogue : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            if(dialogueMark != null) dialogueMark.SetActive(true);
+            if (dialogueMark != null) dialogueMark.SetActive(true);
         }
     }
 
