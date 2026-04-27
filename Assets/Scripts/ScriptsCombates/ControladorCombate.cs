@@ -9,6 +9,8 @@ public class ControladorCombate : MonoBehaviour
     [Header("Ajustes de Proyectil")]
     public GameObject prefabBurbuja;
     public float velocidadBurbuja = 10f;
+    [Header("Configuracion sfx")]
+    [SerializeField] private AudioClip disparo;
 
     void OnEnable()
     {
@@ -38,8 +40,8 @@ public class ControladorCombate : MonoBehaviour
         Vector2 direccion = (destino - origen).normalized;
 
         Rigidbody2D rb = burbuja.GetComponent<Rigidbody2D>();
+        ControladorSonido.Instance.EjecutarSonido(disparo);
         if (rb != null) rb.linearVelocity = direccion * velocidadBurbuja;
-
         Destroy(burbuja, 1.5f);
     }
 }

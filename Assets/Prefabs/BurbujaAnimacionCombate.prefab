@@ -192,3 +192,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b0c16700de0946e2986b18224e997b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BurbujaContacto
+  colisionJugador: {fileID: 8300000, guid: 506b719ab42b842c2b7387a2eea72960, type: 3}
+  colisionNPC: {fileID: 8300000, guid: 6e940bbd9e2b449d0b0d837afae68b16, type: 3}

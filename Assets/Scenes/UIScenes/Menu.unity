@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 11357894}
   - component: {fileID: 11357893}
   - component: {fileID: 11357895}
+  - component: {fileID: 11357896}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -247,6 +248,14 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!81 &11357896
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11357891}
+  m_Enabled: 1
 --- !u!1 &364338018
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +324,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25e9c3c20cb4415eadf6c6f6999edcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuInicio
+--- !u!1001 &486679013
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1132368325236434113, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_Name
+      value: MusicaEscena
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.86445
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0392
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688856818052980891, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 865058418cc50453d9a32fddd505171d, type: 3}
 --- !u!1 &1422893883
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 1533112256}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2.43, z: 0}
   m_LocalScale: {x: 6.5, y: 6.5, z: 6.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -505,3 +571,4 @@ SceneRoots:
   - {fileID: 364338020}
   - {fileID: 1533112258}
   - {fileID: 1422893885}
+  - {fileID: 486679013}

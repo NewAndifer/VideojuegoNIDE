@@ -19,6 +19,10 @@ public class Preguntas : MonoBehaviour
     [Header("API ActualizarMonedas")]
     [SerializeField] private ActualizarMonedasApi apiMonedas;
 
+    [Header("Configuración audios")]
+    [SerializeField] private AudioClip disparo;
+
+    [Header("Configuración de Preguntas")]
     public int dificultad = 1;
     public string operacion = "suma";
     public Button[] replyButtons;
@@ -217,7 +221,7 @@ public class Preguntas : MonoBehaviour
     {
         float segundosTotales = Time.time - tiempoInicio;
 
-        DatosCombateEnviados stats = new DatosCombateEnviados
+            DatosCombateEnviados stats = new DatosCombateEnviados
         {
             idEstudiante = GameManager.Instancia.jugadorActivo.id,
             idNPC = GameManager.Instancia.idEnemigoActual,
