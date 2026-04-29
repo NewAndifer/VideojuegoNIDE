@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <Style src="Tutorial.uss" />
+    <ui:VisualElement name="credits-overlay" class="panel-tutorial-overlay">
+        <ui:VisualElement name="credits-panel" class="panel-tutorial-contenedor">
+            
+            <ui:Label text="CRÉDITOS" class="panel-tutorial-texto" style="font-size: 80px; margin-bottom: 40px;" />
+            
+            <ui:VisualElement class="panel-tutorial-contenido" style="align-items: center; justify-content: center;">
+                <ui:Label text="Fernando Tovar Mejía&#10;&#10;Patricio Carreras Báez&#10;&#10;Jose Manuel Bañuelos Silva&#10;&#10;Juan Manuel Sánchez Velázquez&#10;&#10;David Elías Vargas Ayala" class="panel-tutorial-texto" style="font-size: 45px;" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="panel-tutorial-controles">
+                <ui:Button name="button-close-credits" text="Cerrar" class="panel-tutorial-boton-navegacion" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
