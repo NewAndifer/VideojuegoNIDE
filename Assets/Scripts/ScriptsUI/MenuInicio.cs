@@ -10,6 +10,8 @@ public class MenuInicio : MonoBehaviour
     private Button botonTutorial;
 
     private TutorialManager tutorialManager; 
+    private Button botonCreditos;
+    [SerializeField] private Creditos Creditos;
 
     void OnEnable()
     {
@@ -18,13 +20,16 @@ public class MenuInicio : MonoBehaviour
         
         botonIniciar = root.Q<Button>("BotonIniciar");
         botonSalir = root.Q<Button>("BotonSalir");
-        botonTutorial = root.Q<Button>("BotonTutorial"); 
+        botonTutorial = root.Q<Button>("BotonTutorial");
+        botonCreditos = root.Q<Button>("BotonCreditos");
 
         tutorialManager = FindAnyObjectByType<TutorialManager>();
 
         if (botonIniciar != null) botonIniciar.clicked += IniciarJuego;
         if (botonSalir != null) botonSalir.clicked += CerrarSesion;
         if (botonTutorial != null) botonTutorial.clicked += AbrirTutorial;
+        if (botonCreditos != null) botonCreditos.clicked += () => Creditos.MostrarCreditos();
+
     }
 
     void Start()
