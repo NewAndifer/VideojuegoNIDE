@@ -35,14 +35,21 @@ public class Pausa : MonoBehaviour
         botonMenuPrincipal = root.Q<Button>("BotonMenuPrincipal");
 
         sliderMusica = root.Q<Slider>("SliderMusica");
-        sliderSFX = root.Q<Slider>("SliderEfectosSonido"); // Revisa si le pusiste este nombre
-        
-        // 2. Registramos el evento de cambio de valor
+        sliderSFX = root.Q<Slider>("SliderEfectoSonido");
+
+        if (ControladorSonido.Instance != null)
+        {
+            sliderMusica.value = ControladorSonido.Instance.ultimoVolumenMusica;
+            sliderSFX.value = ControladorSonido.Instance.ultimoVolumenSFX;
+        }
+
+        // --- ¡TE FALTÓ AGREGAR ESTO! ---
         if (sliderMusica != null)
             sliderMusica.RegisterValueChangedCallback(OnCambioMusica);
 
         if (sliderSFX != null)
             sliderSFX.RegisterValueChangedCallback(OnCambioSFX);
+        // --------------------------------
 
         ReanudarJuego();
 
@@ -78,6 +85,9 @@ public class Pausa : MonoBehaviour
         Time.timeScale = 0f;
 
         contenedorPrincipal.style.backgroundColor = new StyleColor(new Color(0, 0, 0, 0.7f));
+
+        contenedorPrincipal.pickingMode = PickingMode.Position;
+
         menuPausa.style.display = DisplayStyle.Flex;
         panelOpciones.style.display = DisplayStyle.None;
         botonPausa.style.display = DisplayStyle.None;
@@ -91,6 +101,9 @@ public class Pausa : MonoBehaviour
         Time.timeScale = 1f;
 
         contenedorPrincipal.style.backgroundColor = new StyleColor(Color.clear);
+
+        contenedorPrincipal.pickingMode = PickingMode.Ignore;
+        
         menuPausa.style.display = DisplayStyle.None;
         panelOpciones.style.display = DisplayStyle.None;
         botonPausa.style.display = DisplayStyle.Flex;
