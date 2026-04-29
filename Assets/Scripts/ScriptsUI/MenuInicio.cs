@@ -7,16 +7,43 @@ public class MenuInicio : MonoBehaviour
     private UIDocument menu;
     private Button botonIniciar;
     private Button botonSalir;
+    private Button botonTutorial; // Referencia al nuevo botón
+
+    private TutorialManager tutorialManager; // Referencia al script del tutorial
 
     void OnEnable()
     {
         menu = GetComponent<UIDocument>();
         var root = menu.rootVisualElement;
+        
         botonIniciar = root.Q<Button>("BotonIniciar");
         botonSalir = root.Q<Button>("BotonSalir");
+        botonTutorial = root.Q<Button>("BotonTutorial"); // Buscamos el botón en el XML
 
-        botonIniciar.clicked +=  IniciarJuego;
-        botonSalir.clicked += CerrarSesion;
+        // Buscamos el TutorialManager en la escena
+        tutorialManager = FindAnyObjectByType<TutorialManager>();
+
+        if (botonIniciar != null) botonIniciar.clicked += IniciarJuego;
+        if (botonSalir != null) botonSalir.clicked += CerrarSesion;
+        if (botonTutorial != null) botonTutorial.clicked += AbrirTutorial;
+    }
+
+    void Start()
+    {
+        // Esto hará que el tutorial se abra automáticamente al cargar la escena
+        AbrirTutorial();
+    }
+
+    private void AbrirTutorial()
+    {
+        if (tutorialManager != null)
+        {
+            tutorialManager.IniciarTutorial();
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el TutorialManager en la escena.");
+        }
     }
 
     private void IniciarJuego()
@@ -26,8 +53,9 @@ public class MenuInicio : MonoBehaviour
 
     private void OnDisable()
     {
-        botonIniciar.clicked -= IniciarJuego;
-        botonSalir.clicked -= CerrarSesion;
+        if (botonIniciar != null) botonIniciar.clicked -= IniciarJuego;
+        if (botonSalir != null) botonSalir.clicked -= CerrarSesion;
+        if (botonTutorial != null) botonTutorial.clicked -= AbrirTutorial;
     }
 
     private void CerrarSesion()
@@ -41,5 +69,4 @@ public class MenuInicio : MonoBehaviour
 
         SceneManager.LoadScene("LogIn");
     }
-
 }

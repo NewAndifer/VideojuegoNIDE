@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="Tutorial.uss" /> <!-- Asegúrate de que esta ruta sigue siendo correcta para ti -->
+    <ui:VisualElement name="tutorial-overlay" class="panel-tutorial-overlay">
+        <ui:VisualElement name="tutorial-panel" class="panel-tutorial-contenedor">
+            
+            <ui:VisualElement name="content-area" class="panel-tutorial-contenido">
+                <!-- INTERCAMBIADO: El texto ahora va PRIMERO -->
+                <ui:Label name="tutorial-text" text="Texto de prueba" class="panel-tutorial-texto" />
+                <!-- INTERCAMBIADO: La imagen ahora va SEGUNDO -->
+                <ui:Image name="tutorial-image" class="panel-tutorial-imagen" />
+            </ui:VisualElement>
+
+            <ui:VisualElement name="control-area" class="panel-tutorial-controles">
+                <ui:Button name="button-back" text="Anterior" class="panel-tutorial-boton-navegacion" />
+                <ui:Button name="button-next" text="Siguiente" class="panel-tutorial-boton-navegacion" />
+            </ui:VisualElement>
+
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
