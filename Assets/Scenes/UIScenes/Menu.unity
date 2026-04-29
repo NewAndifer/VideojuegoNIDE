@@ -381,6 +381,96 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 865058418cc50453d9a32fddd505171d, type: 3}
+--- !u!1 &662421224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 662421226}
+  - component: {fileID: 662421225}
+  - component: {fileID: 662421227}
+  m_Layer: 5
+  m_Name: UIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &662421225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662421224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
+  m_PanelSettings: {fileID: 11400000, guid: 8d780a3f08f864631a8a3019cc1dd79e, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: be2263c73b0cc4f61a1b8403db7b1bec, type: 3}
+  m_SortingOrder: 2
+  m_Position: 0
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+  m_PivotReferenceSize: 0
+  m_Pivot: 0
+  m_WorldSpaceCollider: {fileID: 0}
+--- !u!4 &662421226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662421224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &662421227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662421224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8452e3341f9124b969b2a1d8ea9b1e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::TutorialManager
+  uiDocumentTutorial: {fileID: 662421225}
+  instrucciones:
+  - imagen: {fileID: 21300000, guid: 505c7b2a1b59946a7ad77619751cbfaa, type: 3}
+    texto: Para comenzar nuestra aventura, usa las teclas W, A, S y D para moverme
+      por todos los pueblos y explorar los caminos del desierto. Comienza por explorar
+      el pueblo de las sumas.
+  - imagen: {fileID: 21300000, guid: 93d8f909e9d224a05891506e79dcd8d5, type: 3}
+    texto: "En tu camino encontrar\xE1s a otros personajes que quieren ayudarte,
+      ac\xE9rcate a ellos y presiona la tecla E para escuchar sus consejos."
+  - imagen: {fileID: 21300000, guid: e7705be8078f2433d835d2e7df61b077, type: 3}
+    texto: "Si alguien bloquea tu paso, ac\xE9rcate y presiona la tecla R para demostrar
+      que eres mejor resolviendo problemas de matem\xE1ticas."
+  - imagen: {fileID: 21300000, guid: b8c4cacf8353942d9966985cb7913ed4, type: 3}
+    texto: "Cuando entres a un combate, mira la operaci\xF3n en el centro, elige
+      la respuesta correcta tratando de no perder tus vidas para ganar monedas."
+  - imagen: {fileID: 21300000, guid: 853034aeee08044f4879466d33fd922c, type: 3}
+    texto: "Despu\xE9s de que contestes la respuesta correcta aparecer\xE1 en verde
+      y las dem\xE1s en rojo, si acertaste le disparas una burbuja a tu rival, si
+      no el te la disparara a ti quitandote una vida. "
+  - imagen: {fileID: 21300000, guid: 4a7e97d38704148399bd0fa70278e5b6, type: 3}
+    texto: "Si ya ganaste suficientes monedas en tus duelos, ac\xE9rcate y presiona
+      la tecla R para desbloquear nuevas zonas y continuar tu gran viaje por el mapa."
 --- !u!1 &1422893883
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,3 +662,4 @@ SceneRoots:
   - {fileID: 1533112258}
   - {fileID: 1422893885}
   - {fileID: 486679013}
+  - {fileID: 662421226}
