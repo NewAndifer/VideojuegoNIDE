@@ -24,13 +24,10 @@ public class IniciadorCombate : MonoBehaviour
 
     private void LanzarCombate()
     {
-        // Buscamos al abuelo para sacarle la info
         NPCMapa npc = GetComponentInParent<NPCMapa>();
 
-        // Validaciones de seguridad
         if (npc == null || npc.idNPC >= 1000 || GameManager.Instancia == null) return;
 
-        // --- EL PUENTE DE DATOS ---
         GameManager.Instancia.idEnemigoActual = npc.idNPC;
         GameManager.Instancia.operacionActual = npc.operacion;
         GameManager.Instancia.tipoNPCActual = npc.tipo;
@@ -44,7 +41,6 @@ public class IniciadorCombate : MonoBehaviour
         if (player != null)
             GameManager.Instancia.posicionRetornoMapa = player.transform.position;
 
-        // Selección de escena
         string escena = npc.tipo.ToLower() == "boss" ? "BossCombat" : "BanditCombat";
         SceneManager.LoadScene(npc.tipo.ToLower() == "boss" ? "BossCombat" : "BanditCombat");
     }

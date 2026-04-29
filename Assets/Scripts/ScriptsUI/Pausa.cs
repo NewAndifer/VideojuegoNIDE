@@ -6,62 +6,114 @@ using UnityEngine.UIElements;
 public class Pausa : MonoBehaviour
 {
     public bool estaPausado = false;
+    
+    private VisualElement contenedorPrincipal;
     private VisualElement menuPausa;
+    private VisualElement panelOpciones;
+    
     private Button botonPausa;
     private Button botonContinuar;
+    private Button botonOpciones;
+    private Button botonVolver;
     private Button botonMenuPrincipal;
-    private VisualElement contenedorPrincipal;
-
-    // Cambiamos el nombre para que sea más claro
-    private InputAction accionPausa;
+    
 
     void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
-        menuPausa = root.Q<VisualElement>("ContenedorMenuPausa");
+        
         contenedorPrincipal = root.Q<VisualElement>("ContenedorPrincipal");
+        menuPausa = root.Q<VisualElement>("ContenedorMenuPausa");
+        panelOpciones = root.Q<VisualElement>("ContenedorOpciones");
+        
         botonPausa = root.Q<Button>("BotonPausa");
-        botonContinuar = root.Q<Button>("BotonContinuar");  
+        botonContinuar = root.Q<Button>("BotonContinuar");
+        botonOpciones = root.Q<Button>("BotonOpciones");
+        botonVolver = root.Q<Button>("BotonVolver");
         botonMenuPrincipal = root.Q<Button>("BotonMenuPrincipal");
 
-        menuPausa.style.visibility = Visibility.Hidden;
+        // Forzamos un inicio limpio
+        ReanudarJuego();
 
-        accionPausa = new InputAction(type: InputActionType.Button, binding: "<Keyboard>/escape");
-        accionPausa.performed += ctx => AlternarPausa();
-        botonPausa.clicked += AlternarPausa;
-        botonContinuar.clicked += AlternarPausa;
-        botonMenuPrincipal.clicked += cambiarMenuPrincipal;
+        // 1. Asignaciones ABSOLUTAS (Cada botón tiene una sola misión)
+        botonPausa.clicked += PausarJuego;
+        botonContinuar.clicked += ReanudarJuego;
+        
+        botonOpciones.clicked += AbrirOpciones;
+        botonVolver.clicked += CerrarOpciones;
+        botonMenuPrincipal.clicked += IrAlMenu;
+    }
+
+    void Update()
+    {
+        // El Escape actúa como un interruptor inteligente
+        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            if (estaPausado)
+            {
+                ReanudarJuego();
+            }
+            else
+            {
+                PausarJuego();
+            }
+        }
+    }
+
+    // --- ESTADOS SEPARADOS ---
+
+    public void PausarJuego()
+    {
+        // Si ya está pausado, ignoramos para no repetir código
+        if (estaPausado) return; 
+
+        estaPausado = true;
+        Time.timeScale = 0f;
+
+        contenedorPrincipal.style.backgroundColor = new StyleColor(new Color(0, 0, 0, 0.7f));
+        menuPausa.style.display = DisplayStyle.Flex;
+        panelOpciones.style.display = DisplayStyle.None; 
+        botonPausa.style.display = DisplayStyle.None;
+    }
+
+    public void ReanudarJuego()
+    {
+        if (!estaPausado) return;
+
+        estaPausado = false;
+        Time.timeScale = 1f;
+
+        contenedorPrincipal.style.backgroundColor = new StyleColor(Color.clear);
+        menuPausa.style.display = DisplayStyle.None;
+        panelOpciones.style.display = DisplayStyle.None;
+        botonPausa.style.display = DisplayStyle.Flex;
+    }
 
 
-        accionPausa.Enable();
+    private void AbrirOpciones()
+    {
+        menuPausa.style.display = DisplayStyle.None;
+        panelOpciones.style.display = DisplayStyle.Flex;
+    }
+
+    private void CerrarOpciones()
+    {
+        panelOpciones.style.display = DisplayStyle.None;
+        menuPausa.style.display = DisplayStyle.Flex;
+    }
+
+    private void IrAlMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 
     void OnDisable()
     {
-        if (accionPausa != null)
-        {
-            accionPausa.Disable();
-            accionPausa.performed -= ctx => AlternarPausa();
-            botonPausa.clicked -= AlternarPausa;
-            botonContinuar.clicked -= AlternarPausa;
-            botonMenuPrincipal.clicked -= cambiarMenuPrincipal;
-        }
-        
+        if (botonPausa != null) botonPausa.clicked -= PausarJuego;
+        if (botonContinuar != null) botonContinuar.clicked -= ReanudarJuego;
+        if (botonOpciones != null) botonOpciones.clicked -= AbrirOpciones;
+        if (botonVolver != null) botonVolver.clicked -= CerrarOpciones;
+        if (botonMenuPrincipal != null) botonMenuPrincipal.clicked -= IrAlMenu;
     }
-
-    public void AlternarPausa()
-    {
-        estaPausado = !estaPausado;
-        menuPausa.style.visibility = estaPausado ? Visibility.Visible : Visibility.Hidden;
-
-        contenedorPrincipal.style.backgroundColor = estaPausado ? new StyleColor(new Color(0f, 0f, 0f, 0.7f)) : new StyleColor(Color.clear);
-        Time.timeScale = estaPausado ? 0f : 1f;
-    }
-
-    private void cambiarMenuPrincipal()
-    {
-        AlternarPausa();
-        SceneManager.LoadScene("Menu");
-    }
-    
 }
