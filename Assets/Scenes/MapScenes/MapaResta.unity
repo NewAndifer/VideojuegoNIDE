@@ -4366,7 +4366,7 @@ Transform:
   m_GameObject: {fileID: 289725762}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.16, y: 3.97, z: -20}
+  m_LocalPosition: {x: 7.77, y: 1.07, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8224,6 +8224,22 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   audioAmbienteDialogo: {fileID: 0}
+--- !u!114 &511452878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511452872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 524b3980e8a834ee19a056187576dca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::InteraccionEnemigo
+  nombreEscenaFinal: BanditCombat
+  idEnemigoBaseDeDatos: 3
+  operacionParaEsteCombate: 
+  tipo: 
 --- !u!1 &512252775
 GameObject:
   m_ObjectHideFlags: 0
@@ -8632,7 +8648,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.16, y: 3.97, z: -20}
+  m_LocalPosition: {x: 7.77, y: 1.07, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14684,11 +14700,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1904704375307512609, guid: a4385dd402e9a4f4e9fddd033f567da3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.16
+      value: 7.77
       objectReference: {fileID: 0}
     - target: {fileID: 1904704375307512609, guid: a4385dd402e9a4f4e9fddd033f567da3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.97
+      value: 1.07
       objectReference: {fileID: 0}
     - target: {fileID: 1904704375307512609, guid: a4385dd402e9a4f4e9fddd033f567da3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15741,6 +15757,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1099003036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085484736 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1944782486063114882, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+  m_PrefabInstance: {fileID: 1086428897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592aac5191164c5792548633e69401e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::LetreroDinamico
 --- !u!1001 &1086428897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15761,6 +15788,11 @@ PrefabInstance:
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 2650062754984447182}
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: 'lineasNormales.Array.data[0]'
+      value: Eh tu! Estas en el territorio de Bufford, vete de aqui mientras puedas
+        o tendras que enfrentarte a mi!
+      objectReference: {fileID: 0}
     - target: {fileID: 2540918415576893128, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: m_Name
       value: BandidoPruebas
@@ -15809,6 +15841,14 @@ PrefabInstance:
       propertyPath: idNPC
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: nombre
+      value: Frank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: miLetrero
+      value: 
+      objectReference: {fileID: 1085484736}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17712,6 +17752,153 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1826223269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1265909511
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: npcNameText
+      value: 
+      objectReference: {fileID: 1426477760}
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 4713618460142360827}
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: dialoguePanel
+      value: 
+      objectReference: {fileID: 2650062754984447182}
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: 'lineasNormales.Array.data[0]'
+      value: "\xBFPor qu\xE9 te hiciste bueno {PlayerName}? Eras el mejor sumando
+        monedas en la banda"
+      objectReference: {fileID: 0}
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: 'lineasDerrotado.Array.data[0]'
+      value: Me has derrotado {PlayerName}, puedes pasar!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540918415576893128, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_Name
+      value: BandidoPruebas (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811380378725841191, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: idNPC
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: nombre
+      value: Rusty
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: miLetrero
+      value: 
+      objectReference: {fileID: 1265909513}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2540918415576893128, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1265909514}
+  m_SourcePrefab: {fileID: 100100000, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+--- !u!1 &1265909512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2540918415576893128, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+  m_PrefabInstance: {fileID: 1265909511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1265909513 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1944782486063114882, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+  m_PrefabInstance: {fileID: 1265909511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592aac5191164c5792548633e69401e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::LetreroDinamico
+--- !u!114 &1265909514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265909512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 477ea194725914d50bba66fb9d54a99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::Dialogue
+  dialogueMark: {fileID: 350329469}
+  dialoguePanel: {fileID: 2650062754984447182}
+  dialogueText: {fileID: 4713618460142360827}
+  npcNameText: {fileID: 1426477760}
+  lineasNormales:
+  - Eh tu! Estas en el territorio de Bufford, vete de aqui mientras puedas!
+  lineasDerrotado:
+  - Me has derrotado, tienes mi respeto
+  interactAction:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9488d341-18b1-46b1-be36-f8aa1ec1e7a8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 16704c84-52e0-419c-b6f6-bbfde0dc640b
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact
+      m_Flags: 0
+    m_Flags: 0
+  audioAmbienteDialogo: {fileID: 0}
 --- !u!1 &1270342885
 GameObject:
   m_ObjectHideFlags: 0
@@ -18810,7 +18997,7 @@ Transform:
   m_GameObject: {fileID: 1323531082}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 80.08942, y: -50.763973, z: 0}
+  m_LocalPosition: {x: 56.63, y: -52.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25068,6 +25255,15 @@ PrefabInstance:
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 2650062754984447182}
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: 'lineasNormales.Array.data[0]'
+      value: "\xA1Eh, t\xFA! \xBFQu\xE9 crees que haces merodeando por aqu\xED? \xA1Largo
+        antes de que llame a los muchachos"
+      objectReference: {fileID: 0}
+    - target: {fileID: 203952931714018875, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: 'lineasDerrotado.Array.data[0]'
+      value: Me has derrotado {PlayerName}, tienes mi respeto
+      objectReference: {fileID: 0}
     - target: {fileID: 2540918415576893128, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: m_Name
       value: BandidoPruebas (2)
@@ -25115,6 +25311,10 @@ PrefabInstance:
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: idNPC
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: nombre
+      value: Joe
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30078,7 +30278,7 @@ MonoBehaviour:
   dialogueText: {fileID: 4713618460142360827}
   npcNameText: {fileID: 1426477760}
   lineasNormales:
-  - Eh tu! Estas en el territorio de Bufford, largate!
+  - Eh tu! Estas en el territorio de Bufford, vete de aqui mientras puedas!
   lineasDerrotado:
   - Me has derrotado, tienes mi respeto
   interactAction:
@@ -30896,6 +31096,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5651550760053278462, guid: 4acf617a88d1f49c48d05773a8cee776, type: 3}
       insertIndex: -1
       addedObject: {fileID: 511452877}
+    - targetCorrespondingSourceObject: {fileID: 5651550760053278462, guid: 4acf617a88d1f49c48d05773a8cee776, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 511452878}
   m_SourcePrefab: {fileID: 100100000, guid: 4acf617a88d1f49c48d05773a8cee776, type: 3}
 --- !u!1 &2650062754984447182 stripped
 GameObject:
@@ -30922,13 +31125,46 @@ PrefabInstance:
       propertyPath: dialoguePanel
       value: 
       objectReference: {fileID: 2650062754984447182}
+    - target: {fileID: 522185508062084206, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: lineasNormales.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 522185508062084206, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: 'lineasNormales.Array.data[0]'
+      value: "\xA1Llegaste justo a tiempo, {PlayerName}! El rastro de Terry se est\xE1
+        perdiendo en este ca\xF1\xF3n de ecos"
+      objectReference: {fileID: 0}
+    - target: {fileID: 522185508062084206, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: 'lineasNormales.Array.data[1]'
+      value: "Restar es lo opuesto a sumar. Se trata de quitar una cantidad a lo
+        que ya ten\xEDas para saber cu\xE1nto te queda"
+      objectReference: {fileID: 0}
+    - target: {fileID: 522185508062084206, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: 'lineasNormales.Array.data[2]'
+      value: "Imagina que tienes 10 manzanas para el viaje, pero te comes 4. Ahora
+        solo te quedan 6. El n\xFAmero se hace peque\xF1o"
+      objectReference: {fileID: 0}
+    - target: {fileID: 522185508062084206, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: 'lineasNormales.Array.data[3]'
+      value: "Usa el signo - para descubrir cu\xE1nto nos han quitado. \xA1No dejes
+        que borren tu rastro"
+      objectReference: {fileID: 0}
+    - target: {fileID: 522185508062084206, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: 'lineasNormales.Array.data[4]'
+      value: "S\xE9 por qu\xE9 est\xE1s aqu\xED, {PlayerName}. No puedes borrar que
+        antes usabas tus sumas para contar el bot\xEDn de Terry."
+      objectReference: {fileID: 0}
+    - target: {fileID: 522185508062084206, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: 'lineasNormales.Array.data[5]'
+      value: "Pero devolviendo lo robado ... as\xED es como se empieza de nuevo."
+      objectReference: {fileID: 0}
     - target: {fileID: 3412230320921171446, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20
+      value: 7.91
       objectReference: {fileID: 0}
     - target: {fileID: 3412230320921171446, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.59
+      value: 7.73
       objectReference: {fileID: 0}
     - target: {fileID: 3412230320921171446, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30964,7 +31200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5014632910674828787, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_FlipX
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8830059138762977166, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_Name
@@ -31072,5 +31308,6 @@ SceneRoots:
   - {fileID: 528502623}
   - {fileID: 159374138}
   - {fileID: 1086428897}
+  - {fileID: 1265909511}
   - {fileID: 1840920130}
   - {fileID: 983509818}

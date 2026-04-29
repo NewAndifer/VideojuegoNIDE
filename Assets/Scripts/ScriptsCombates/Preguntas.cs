@@ -102,7 +102,7 @@ public class Preguntas : MonoBehaviour
         uiScript.Inicializar(uiDocument.rootVisualElement);
 
         var root = uiDocument.rootVisualElement;
-        var qList = root.Query<Button>().ToList();
+        var qList = root.Query<Button>(null, "boton").ToList();
         replyButtons = qList != null ? qList.ToArray() : new Button[0];
 
         ActualizarTodoElHUD();
@@ -221,7 +221,7 @@ public class Preguntas : MonoBehaviour
     {
         float segundosTotales = Time.time - tiempoInicio;
 
-            DatosCombateEnviados stats = new DatosCombateEnviados
+        DatosCombateEnviados stats = new DatosCombateEnviados
         {
             idEstudiante = GameManager.Instancia.jugadorActivo.id,
             idNPC = GameManager.Instancia.idEnemigoActual,
@@ -232,15 +232,18 @@ public class Preguntas : MonoBehaviour
             aciertos = aciertosAcumulados
         };
 
-        string jsonStats = JsonUtility.ToJson(stats, true); // El 'true' es para que se vea ordenado (pretty print)
+        string jsonStats = JsonUtility.ToJson(stats, true);
         Debug.Log("Estadísticas del Combate:\n" + jsonStats);
+
+        string mensajeFinal = "Que lastima, intentalo de nuevo";
 
         if (aciertosAcumulados >= maxAciertos)
         {
-            DarRecompensa();
+            int monedasObtenidas = DarRecompensa();
+            mensajeFinal = $"Lo derrotaste, ganaste {monedasObtenidas} monedas";
         }
 
-        StartCoroutine(EnviarEstadisticasAPI(stats));
+        StartCoroutine(EnviarEstadisticasAPI(stats, mensajeFinal));
     }
 
     private IEnumerator MostrarColoresYEsperar()
@@ -262,14 +265,13 @@ public class Preguntas : MonoBehaviour
 
         SetupQuestion();
     }
-    void DarRecompensa()
+    int DarRecompensa()
     {
         int idBuscado = GameManager.Instancia.idEnemigoActual;
         var jugador = GameManager.Instancia.jugadorActivo;
-
         int cantidadARecompensar = GameManager.Instancia.monedasRecompensaActual;
+        int monedasGanadas = 0;
 
-        // 1. Buscamos el índice para poder modificarlo directamente (evita error de structs)
         int index = -1;
         for (int i = 0; i < jugador.enemigosDerrotados.Length; i++)
         {
@@ -280,36 +282,36 @@ public class Preguntas : MonoBehaviour
             }
         }
 
-        // 2. Lógica centralizada
         if (index != -1)
         {
             if (!jugador.enemigosDerrotados[index].derrotado)
             {
                 SumarMonedas(300);
                 jugador.enemigosDerrotados[index].derrotado = true;
+                monedasGanadas = 300;
             }
         }
         else
         {
             SumarMonedas(cantidadARecompensar);
-            // Agregar al array (Considera cambiar esto a List en el modelo de datos)
             Enemigo nuevoEnemigo = new Enemigo { id_npc = idBuscado, derrotado = true };
             var listaTemporal = new List<Enemigo>(jugador.enemigosDerrotados) { nuevoEnemigo };
             jugador.enemigosDerrotados = listaTemporal.ToArray();
+            monedasGanadas = cantidadARecompensar;
         }
 
-        // 3. Sincronizar con API
         if (apiMonedas != null) StartCoroutine(apiMonedas.EnviarMonedasAPI());
+        
+        return monedasGanadas; 
     }
 
-    // Método auxiliar para no repetir código
     void SumarMonedas(int cantidad)
     {
         GameManager.Instancia.jugadorActivo.monedas += cantidad;
         Debug.Log($"+{cantidad} monedas obtenidas.");
     }
 
-    IEnumerator EnviarEstadisticasAPI(DatosCombateEnviados datos)
+    IEnumerator EnviarEstadisticasAPI(DatosCombateEnviados datos, string mensajeAlUsuario)
     {
         string json = JsonUtility.ToJson(datos);
 
@@ -333,8 +335,19 @@ public class Preguntas : MonoBehaviour
 
             if(ControladorSonido.Instance != null) ControladorSonido.Instance.StopMusica();
         
+            uiScript.MostrarPantallaFinal(mensajeAlUsuario, () => {
+                if (ControladorSonido.Instance != null)
+            ControladorSonido.Instance.StopMusica();
 
-            SceneManager.LoadScene("Mainmap_01");
+        if (GameManager.Instancia != null)
+        {
+            SceneManager.LoadScene(GameManager.Instancia.ultimaEscenaMapa);
+        }
+        else
+        {
+            SceneManager.LoadScene("Crossroad");
+        }
+            });
         }
     }
 
