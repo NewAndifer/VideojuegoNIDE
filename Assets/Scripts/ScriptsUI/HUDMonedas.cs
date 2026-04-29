@@ -97,6 +97,13 @@ public class HUDMonedas : MonoBehaviour
 
     public void TransportarMapa()
     {
+        if (GameManager.Instancia != null)
+    {
+        GameManager.Instancia.posicionRetornoMapa = Vector3.zero;
+        
+        if (ControladorSonido.Instance != null) ControladorSonido.Instance.StopMusica();
+
         SceneManager.LoadScene("Crossroads");
+    }
     }
 }
