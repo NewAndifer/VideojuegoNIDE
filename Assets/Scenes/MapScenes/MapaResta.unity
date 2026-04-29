@@ -15839,7 +15839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: idNPC
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: nombre
@@ -17827,7 +17827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: idNPC
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: nombre
@@ -25310,7 +25310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: idNPC
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: nombre
@@ -31197,6 +31197,10 @@ PrefabInstance:
     - target: {fileID: 3412230320921171446, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4041241754885710594, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: idNPC
+      value: 1003
       objectReference: {fileID: 0}
     - target: {fileID: 5014632910674828787, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_FlipX
