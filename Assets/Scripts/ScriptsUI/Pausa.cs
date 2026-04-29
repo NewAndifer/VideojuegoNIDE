@@ -6,39 +6,49 @@ using UnityEngine.UIElements;
 public class Pausa : MonoBehaviour
 {
     public bool estaPausado = false;
-    
+
     private VisualElement contenedorPrincipal;
     private VisualElement menuPausa;
     private VisualElement panelOpciones;
-    
+
     private Button botonPausa;
     private Button botonContinuar;
     private Button botonOpciones;
     private Button botonVolver;
     private Button botonMenuPrincipal;
-    
+
+    private Slider sliderMusica;
+    private Slider sliderSFX;
 
     void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
-        
+
         contenedorPrincipal = root.Q<VisualElement>("ContenedorPrincipal");
         menuPausa = root.Q<VisualElement>("ContenedorMenuPausa");
         panelOpciones = root.Q<VisualElement>("ContenedorOpciones");
-        
+
         botonPausa = root.Q<Button>("BotonPausa");
         botonContinuar = root.Q<Button>("BotonContinuar");
         botonOpciones = root.Q<Button>("BotonOpciones");
         botonVolver = root.Q<Button>("BotonVolver");
         botonMenuPrincipal = root.Q<Button>("BotonMenuPrincipal");
 
-        // Forzamos un inicio limpio
+        sliderMusica = root.Q<Slider>("SliderMusica");
+        sliderSFX = root.Q<Slider>("SliderEfectosSonido"); // Revisa si le pusiste este nombre
+        
+        // 2. Registramos el evento de cambio de valor
+        if (sliderMusica != null)
+            sliderMusica.RegisterValueChangedCallback(OnCambioMusica);
+
+        if (sliderSFX != null)
+            sliderSFX.RegisterValueChangedCallback(OnCambioSFX);
+
         ReanudarJuego();
 
-        // 1. Asignaciones ABSOLUTAS (Cada botón tiene una sola misión)
         botonPausa.clicked += PausarJuego;
         botonContinuar.clicked += ReanudarJuego;
-        
+
         botonOpciones.clicked += AbrirOpciones;
         botonVolver.clicked += CerrarOpciones;
         botonMenuPrincipal.clicked += IrAlMenu;
@@ -46,7 +56,6 @@ public class Pausa : MonoBehaviour
 
     void Update()
     {
-        // El Escape actúa como un interruptor inteligente
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
             if (estaPausado)
@@ -60,19 +69,17 @@ public class Pausa : MonoBehaviour
         }
     }
 
-    // --- ESTADOS SEPARADOS ---
 
     public void PausarJuego()
     {
-        // Si ya está pausado, ignoramos para no repetir código
-        if (estaPausado) return; 
+        if (estaPausado) return;
 
         estaPausado = true;
         Time.timeScale = 0f;
 
         contenedorPrincipal.style.backgroundColor = new StyleColor(new Color(0, 0, 0, 0.7f));
         menuPausa.style.display = DisplayStyle.Flex;
-        panelOpciones.style.display = DisplayStyle.None; 
+        panelOpciones.style.display = DisplayStyle.None;
         botonPausa.style.display = DisplayStyle.None;
     }
 
@@ -115,5 +122,28 @@ public class Pausa : MonoBehaviour
         if (botonOpciones != null) botonOpciones.clicked -= AbrirOpciones;
         if (botonVolver != null) botonVolver.clicked -= CerrarOpciones;
         if (botonMenuPrincipal != null) botonMenuPrincipal.clicked -= IrAlMenu;
+        if (sliderMusica != null)
+            sliderMusica.UnregisterValueChangedCallback(OnCambioMusica);
+
+        if (sliderSFX != null)
+            sliderSFX.UnregisterValueChangedCallback(OnCambioSFX);
+    }
+
+    private void OnCambioMusica(ChangeEvent<float> evt)
+    {
+        if (ControladorSonido.Instance != null)
+        {
+            // Corregido: SetVolumenMusica en lugar de AjustarVolumenMusica
+            ControladorSonido.Instance.SetVolumenMusica(evt.newValue);
+        }
+    }
+
+    private void OnCambioSFX(ChangeEvent<float> evt)
+    {
+        if (ControladorSonido.Instance != null)
+        {
+            // Corregido: SetVolumenSFX en lugar de AjustarVolumenSFX
+            ControladorSonido.Instance.SetVolumenSFX(evt.newValue);
+        }
     }
 }

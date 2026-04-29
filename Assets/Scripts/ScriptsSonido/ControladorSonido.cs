@@ -5,12 +5,17 @@ public class ControladorSonido : MonoBehaviour
 {
     public static ControladorSonido Instance;
 
+
     [Header("Canales de Audio")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource musicSource;
 
     [Header("Mixer")]
     [SerializeField] private AudioMixer mainMixer;
+
+    [Header("Valores Guardados")]
+    public float ultimoVolumenMusica = 1f;
+    public float ultimoVolumenSFX = 1f;
 
     private void Awake()
     {
@@ -45,12 +50,15 @@ public class ControladorSonido : MonoBehaviour
     // --- MÉTODOS PARA EL MENÚ DE AJUSTES ---
     public void SetVolumenMusica(float sliderValue)
     {
-        // El Mixer usa escala logarítmica (dB), por eso usamos Mathf.Log10
+        // Guardamos el valor para que la UI lo pueda leer después
+        ultimoVolumenMusica = sliderValue;
         mainMixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
     }
 
     public void SetVolumenSFX(float sliderValue)
     {
+        // Guardamos el valor
+        ultimoVolumenSFX = sliderValue;
         mainMixer.SetFloat("SFXVol", Mathf.Log10(sliderValue) * 20);
     }
 

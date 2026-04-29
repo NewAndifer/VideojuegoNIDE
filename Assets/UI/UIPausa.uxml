@@ -1,13 +1,24 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/UIPausa.uss?fileID=7433441132597879392&amp;guid=737544b0f83b94f56be3ede59c74f9d2&amp;type=3#UIPausa"/>
     <ui:VisualElement name="ContenedorPrincipal" picking-mode="Ignore" class="contenedorPrincipal">
-        <ui:VisualElement name="ContenedorBotonPausa" picking-mode="Ignore" class="contenedorBotonPausa">
+        <ui:VisualElement name="ContenedorBotonPausa" picking-mode="Ignore" class="contenedorBotonPausa" style="display: flex;">
             <ui:Button text="" name="BotonPausa" class="botonPausa" style="border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); background-color: rgba(188, 188, 188, 0);"/>
         </ui:VisualElement>
-        <ui:VisualElement name="ContenedorMenuPausa" class="contenedorPausa">
+        <ui:VisualElement name="ContenedorMenuPausa" picking-mode="Ignore" class="contenedorMenuPausa" style="display: none;">
             <ui:Label text="Pausa" name="Pausa" class="texto"/>
             <ui:Button text="Continuar" name="BotonContinuar" class="botones"/>
+            <ui:Button text="Opciones" name="BotonOpciones" class="botones"/>
             <ui:Button text="Menu principal" name="BotonMenuPrincipal" class="botones"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="ContenedorOpciones" picking-mode="Ignore" class="contenedorOpciones contenedorMenuPausa" style="flex-grow: 1; display: none;">
+            <ui:Label text="Opciones" name="LabelOpciones" class="labelOpciones"/>
+            <ui:VisualElement name="ContenedorSliders" class="contenedorSliders" style="display: flex;">
+                <ui:Label text="Efectos de sonido" name="LabelEfectosSonido" class="labelSlider"/>
+                <ui:Slider label="" value="1" high-value="1" show-input-field="false" direction="Horizontal" low-value="0.001" page-size="0.1" name="SliderEfectoSonido" style="align-self: center; align-items: center;"/>
+                <ui:Label text="Música" name="LabelMusica" class="labelSlider"/>
+                <ui:Slider label="" value="100" high-value="1" fill="false" show-input-field="false" direction="Horizontal" low-value="0.001" page-size="0.1" inverted="false" name="SliderMusica" style="align-items: center;"/>
+            </ui:VisualElement>
+            <ui:Button text="Volver" name="BotonVolver" class="botones"/>
         </ui:VisualElement>
         <ui:VisualElement name="ContenedorRelleno" picking-mode="Ignore" class="contenedorRelleno"/>
     </ui:VisualElement>

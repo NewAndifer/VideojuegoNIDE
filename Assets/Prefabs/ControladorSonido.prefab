@@ -48,7 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: JuegoPrincipal::ControladorSonido
   sfxSource: {fileID: 4944440902388784155}
   musicSource: {fileID: 3429284237979424882}
-  mainMixer: {fileID: 0}
+  mainMixer: {fileID: 24100000, guid: 834c5891f73474809ae1cf812c01cf17, type: 2}
+  ultimoVolumenMusica: 1
+  ultimoVolumenSFX: 1
 --- !u!82 &4944440902388784155
 AudioSource:
   m_ObjectHideFlags: 0

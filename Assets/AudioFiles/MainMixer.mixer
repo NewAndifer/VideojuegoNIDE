@@ -75,8 +75,8 @@ AudioMixerController:
   m_AudioMixerGroupViews:
   - guids:
     - 00442fe81ea994afca3c8f6a2bd62236
-    - 17fac034e518949cba914a6f69c7fbbd
     - 0ed0b328ca72b45ab8cdf36fb3c2fc21
+    - 17fac034e518949cba914a6f69c7fbbd
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -138,6 +138,22 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: 51ec9ccf346004bd98675b75af64bbc9
   m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &3643731911194038760
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 183d311532fe04088a8c029f929f7a43
+  m_EffectName: Distortion
+  m_MixLevel: 15f666130b09f49b38dd3f9539d67b5b
+  m_Parameters:
+  - m_ParameterName: Level
+    m_GUID: a1d2ed921f6ba48c48e1f787bf921a81
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
