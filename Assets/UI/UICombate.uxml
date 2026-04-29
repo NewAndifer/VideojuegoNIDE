@@ -18,5 +18,10 @@
             <ui:Button text="Button" name="Boton3" class="boton"/>
             <ui:Button text="Button" name="Boton4" class="boton"/>
         </ui:VisualElement>
+        <ui:VisualElement name="PanelFinal" class="panelFinal">
+            <ui:Label text="Mensaje..." name="MensajeFinal" class="textoFinal"/>
+            <ui:Button text="Continuar" name="BotonContinuar" class="botonContinuar"/>
+        </ui:VisualElement>
+
     </ui:VisualElement>
 </ui:UXML>
