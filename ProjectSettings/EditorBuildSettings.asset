@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UIScenes/Menu.unity
     guid: 8706704f5b58e410a97797c64c060d8b
   - enabled: 1
-    path: Assets/Scenes/MapScenes/Mainmap_01.unity
+    path: Assets/Scenes/MapScenes/MapaSuma.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/MapScenes/BanditCombat.unity
@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/IndividualScenes/BossCombat.unity
     guid: 6030d80c39e6ffad69d85da2433184b4
+  - enabled: 1
+    path: Assets/Scenes/MAPS/Crossroads.unity
+    guid: 56becb81de2c74d79bc2733c68389c2f
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

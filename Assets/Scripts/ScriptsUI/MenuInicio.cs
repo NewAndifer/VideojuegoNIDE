@@ -21,7 +21,7 @@ public class MenuInicio : MonoBehaviour
 
     private void IniciarJuego()
     {
-        SceneManager.LoadScene("Mainmap_01");
+        SceneManager.LoadScene("Crossroads");
     }
 
     private void OnDisable()
