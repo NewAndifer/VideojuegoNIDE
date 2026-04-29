@@ -2916,7 +2916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4821114547628745432, guid: b5e6dc119d99f4497bcd0eb2830551fb, type: 3}
       propertyPath: costo
-      value: 1000
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4821114547628745432, guid: b5e6dc119d99f4497bcd0eb2830551fb, type: 3}
       propertyPath: idPuerta
@@ -4733,6 +4733,14 @@ PrefabInstance:
       propertyPath: miLetrero
       value: 
       objectReference: {fileID: 239205414}
+    - target: {fileID: 4398365282528898777, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014632910674828787, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5968864172111216119, guid: 575d0924c6911438fbb729dbd79ccfac, type: 3}
       propertyPath: m_Camera
       value: 
@@ -5193,6 +5201,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   apiMonedas: {fileID: 764307106}
+  apiPuertas: {fileID: 0}
 --- !u!4 &1200387336
 Transform:
   m_ObjectHideFlags: 0
@@ -5724,6 +5733,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   apiMonedas: {fileID: 1581161179}
+  apiPuertas: {fileID: 0}
 --- !u!4 &1323305063
 Transform:
   m_ObjectHideFlags: 0
@@ -7324,7 +7334,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7725048193672720262, guid: ca08b74b2683c4e27897cbceff6a3ae7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

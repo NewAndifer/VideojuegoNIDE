@@ -14,14 +14,14 @@ public class IdentificadorPuerta : MonoBehaviour
     [SerializeField] private GameObject puertaDesbloqueada;
 
     [Header("Referencia al Script Dinámico")]
-    // Arrastra aquí el objeto hijo que tiene el script 'LetreroDinamico'
     [SerializeField] private LetreroDinamico miLetrero;
 
     [Header("Input")]
     [SerializeField] private InputAction interactAction;
 
-    [Header("API ActualizarMonedas")]
+    [Header("API")]
     [SerializeField] private ActualizarMonedasApi apiMonedas;
+    [SerializeField] private ActualizarPuertasApi apiPuertas;
 
     private bool isPlayerInRange;
 
@@ -32,7 +32,6 @@ public class IdentificadorPuerta : MonoBehaviour
     {
         DescargarDatosPuerta();
         SetEstadosPuertas();
-        // Limpiamos por si acaso quedó algo en el prefab
         if (miLetrero != null) miLetrero.Limpiar();
     }
 
@@ -60,7 +59,10 @@ public class IdentificadorPuerta : MonoBehaviour
             abierta = true;
             ActualizarPuertaEnData();
             SetEstadosPuertas();
+
             if (miLetrero != null) miLetrero.Limpiar();
+
+            StartCoroutine(apiPuertas.ActualizarPuertaAPI(idPuerta));
 
             if (apiMonedas != null) StartCoroutine(apiMonedas.EnviarMonedasAPI());
 
@@ -108,7 +110,6 @@ public class IdentificadorPuerta : MonoBehaviour
         }
     }
 
-    // --- Tus métodos de persistencia ---
     public void SetEstadosPuertas()
     {
         puertaDesbloqueada.SetActive(abierta);
