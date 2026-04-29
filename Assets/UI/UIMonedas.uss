@@ -13,22 +13,20 @@
     flex-direction: row;
 }
 
-
-
 .contenedorMonedas {
     flex-direction: row;
     justify-content: center;
-    align-self: flex-end;
-    min-width: 15%;
-    max-width: 15%;
-    min-height: 10%;
-    max-height: 10%;
+    align-self: center;
     align-items: center;
     -unity-text-align: upper-center;
     align-content: center;
-    margin-bottom: 2%;
-    margin-right: 4%;
+    margin-bottom: 0;
+    margin-right: 0;
     background-image: url("project://database/Assets/Cowboy%20Cats/C00B7ECE-166D-4160-BDED-58D1B166D550/Untitled%204.png?fileID=-1818288207410235511&guid=59d2a3247597742898c7890e05542e58&type=3#Untitled 4_4");
+    width: 250px;
+    height: 125px;
+    margin-top: 0;
+    margin-left: 0;
 }
 
 .numMonedas {
@@ -36,9 +34,33 @@
     align-self: center;
 }
 
-
-
 .imagenMonedas {
     height: 75%;
     width: 30%;
+}
+
+.contenedorDerecha {
+    height: 30%;
+    width: 20%;
+    justify-content: space-evenly;
+    align-self: flex-end;
+    align-content: center;
+    align-items: center;
+}
+
+.boton {
+    width: 250px;
+    height: 125px;
+    font-size: 70px;
+    -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.otf?fileID=12800000&guid=19b9bfe81b147ba4f91b639e7c1b07d9&type=3#BoldPixels");
+    background-image: url("project://database/Assets/Cowboy%20Cats/Untitled%204.png?fileID=-2401453818774780720&guid=52383d200f78a4551836d2ca757c6796&type=3#Untitled 4_5");
+    background-color: rgba(101, 101, 101, 0);
+    border-left-color: rgba(196, 196, 196, 0);
+    border-right-color: rgba(196, 196, 196, 0);
+    border-top-color: rgba(196, 196, 196, 0);
+    border-bottom-color: rgba(196, 196, 196, 0);
+}
+
+.boton:hover {
+    background-image: url("project://database/Assets/Cowboy%20Cats/Untitled%204.png?fileID=2935242376306719514&guid=52383d200f78a4551836d2ca757c6796&type=3#Untitled 4_6");
 }

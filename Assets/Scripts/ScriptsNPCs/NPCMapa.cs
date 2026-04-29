@@ -10,6 +10,8 @@ public class NPCMapa : MonoBehaviour
     public string tipo = "bandido";
     public string nombre = "Desconocido";
     public bool derrotado = false;
+    [Header("Monedas dadas NPC")]
+    public int monedas = 0;
 
     [Header("Referencia UI")]
     [SerializeField] private LetreroDinamico miLetrero;
@@ -20,15 +22,15 @@ public class NPCMapa : MonoBehaviour
         if (miLetrero == null) miLetrero = GetComponentInChildren<LetreroDinamico>();
     }
 
-    // --- ¡DESCOMENTAMOS ESTO! ---
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && miLetrero != null)
         {
-            miLetrero.Limpiar(); 
+            miLetrero.Limpiar();
 
             miLetrero.AgregarOpcion("E", "hablar");
             miLetrero.AgregarOpcion("R", "combatir");
+            SetDatosEnGameManager();
         }
     }
 
@@ -48,6 +50,7 @@ public class NPCMapa : MonoBehaviour
         GameManager.Instancia.operacionActual = operacion;
         GameManager.Instancia.tipoNPCActual = tipo;
         GameManager.Instancia.nombreNPCActual = nombre;
+        GameManager.Instancia.monedasRecompensaActual = monedas;
     }
 
     private void LimpiarDatosGameManager()
@@ -83,5 +86,23 @@ public class NPCMapa : MonoBehaviour
             }
         }
         Debug.LogWarning($"NPC ID {idNPC} no encontrado en la DB del jugador.");
+    }
+
+    // Cambia esto en tu NPCMapa.cs
+    public void OnJugadorEntra() // Antes era OnTriggerEnter2D
+    {
+        if (miLetrero != null)
+        {
+            SetDatosEnGameManager(); // Importante para pasar las monedas dinámicas
+            miLetrero.Limpiar();
+            miLetrero.AgregarOpcion("E", "hablar");
+            miLetrero.AgregarOpcion("R", "combatir");
+        }
+    }
+
+    public void OnJugadorSale() // Antes era OnTriggerExit2D
+    {
+        LimpiarDatosGameManager();
+        if (miLetrero != null) miLetrero.Limpiar();
     }
 }

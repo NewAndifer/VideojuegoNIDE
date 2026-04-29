@@ -267,6 +267,8 @@ public class Preguntas : MonoBehaviour
         int idBuscado = GameManager.Instancia.idEnemigoActual;
         var jugador = GameManager.Instancia.jugadorActivo;
 
+        int cantidadARecompensar = GameManager.Instancia.monedasRecompensaActual;
+
         // 1. Buscamos el índice para poder modificarlo directamente (evita error de structs)
         int index = -1;
         for (int i = 0; i < jugador.enemigosDerrotados.Length; i++)
@@ -289,7 +291,7 @@ public class Preguntas : MonoBehaviour
         }
         else
         {
-            SumarMonedas(300);
+            SumarMonedas(cantidadARecompensar);
             // Agregar al array (Considera cambiar esto a List en el modelo de datos)
             Enemigo nuevoEnemigo = new Enemigo { id_npc = idBuscado, derrotado = true };
             var listaTemporal = new List<Enemigo>(jugador.enemigosDerrotados) { nuevoEnemigo };

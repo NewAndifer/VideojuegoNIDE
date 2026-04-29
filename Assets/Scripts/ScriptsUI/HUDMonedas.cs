@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class HUDMonedas : MonoBehaviour
@@ -7,6 +8,7 @@ public class HUDMonedas : MonoBehaviour
     public UIDocument uiDocument;
     public string nombreIconoMoneda = "IconoMoneda";
     public string nombreTextoMonedas = "NumMonedas";
+    public string nombreBotonMapa = "BotonMapa";
 
     [Header("Animación del Sprite")]
     public Sprite[] framesAnimacion;
@@ -16,6 +18,7 @@ public class HUDMonedas : MonoBehaviour
     private Label textoUI;
     private int frameActual = 0;
     private float temporizador = 0f;
+    private Button botonMapa;
 
     void OnEnable()
     {
@@ -24,8 +27,29 @@ public class HUDMonedas : MonoBehaviour
 
         iconoUI = root.Q<Image>(nombreIconoMoneda);
         textoUI = root.Q<Label>(nombreTextoMonedas);
+        botonMapa = root.Q<Button>(nombreBotonMapa);
+
+        string escenaActual = SceneManager.GetActiveScene().name;
+
+        if (escenaActual == "Crossroads")
+        {
+            botonMapa.style.display = DisplayStyle.None;
+        }
+        else
+        {
+            botonMapa.style.display = DisplayStyle.Flex;
+            botonMapa.clicked += TransportarMapa;
+        }
 
         SincronizarConGameManager();
+    }
+
+    void OnDisable()
+    {
+        if (botonMapa != null)
+        {
+            botonMapa.clicked -= TransportarMapa;
+        }
     }
 
     void Update()
@@ -69,5 +93,10 @@ public class HUDMonedas : MonoBehaviour
         {
             textoUI.text = cantidadActual.ToString();
         }
+    }
+
+    public void TransportarMapa()
+    {
+        SceneManager.LoadScene("Crossroads");
     }
 }

@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     public string operacionActual;
     public string tipoNPCActual;
     public string nombreNPCActual;
+    public int monedasRecompensaActual = 0;
+    // En GameManager.cs añade esto:
+    [Header("Navegación")]
+    public string ultimaEscenaMapa = "Crossroads"; // Valor por defecto por seguridad
     public Vector3 posicionRetornoMapa;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -31,7 +35,8 @@ public class GameManager : MonoBehaviour
             _instancia = FindFirstObjectByType<GameManager>();
 
             if (_instancia == null)
-            {                GameObject go = new GameObject("GameManager_Global");
+            {
+                GameObject go = new GameObject("GameManager_Global");
                 _instancia = go.AddComponent<GameManager>();
                 DontDestroyOnLoad(go);
                 Debug.Log("<color=green>GameManager Global Creado Automáticamente</color>");

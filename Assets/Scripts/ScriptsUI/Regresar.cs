@@ -17,12 +17,21 @@ public class Regresar : MonoBehaviour
 
     private void CerrarEscena()
     {
-        if(ControladorSonido.Instance != null) ControladorSonido.Instance.StopMusica();
-        
-        SceneManager.LoadScene("Mainmap_01");
+        if (ControladorSonido.Instance != null)
+            ControladorSonido.Instance.StopMusica();
+
+        if (GameManager.Instancia != null)
+        {
+            SceneManager.LoadScene(GameManager.Instancia.ultimaEscenaMapa);
+        }
+        else
+        {
+            SceneManager.LoadScene("Crossroad");
+        }
     }
     private void OnDisable()
     {
-        botonRegresar.clicked -= CerrarEscena;
+        if (botonRegresar != null)
+            botonRegresar.clicked -= CerrarEscena;
     }
 }

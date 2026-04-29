@@ -1,9 +1,12 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/UIMonedas.uss?fileID=7433441132597879392&amp;guid=5e2fe1770a0384d8f877e4139ec4c870&amp;type=3#UIMonedas"/>
     <ui:VisualElement name="ContenedorPrincipal" picking-mode="Ignore" class="ContenedorPrincipal contenedorPrincipal" style="flex-grow: 1;">
-        <ui:VisualElement name="ContenedorMonedas" picking-mode="Ignore" class="contenedorMonedas">
-            <ui:Image name="IconoMoneda" class="imagenMonedas"/>
-            <ui:Label text="0" name="NumMonedas" class="numMonedas" style="-unity-font-definition: url(&quot;project://database/Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Fonts/PerfectDOSVGA437.ttf?fileID=12800000&amp;guid=74a5091d8707f334b9a5c31ef71a64ba&amp;type=3#PerfectDOSVGA437&quot;);"/>
+        <ui:VisualElement name="ContenedorDerecha" class="contenedorDerecha">
+            <ui:Button text="Mapa&#10;" name="BotonMapa" class="boton"/>
+            <ui:VisualElement name="ContenedorMonedas" picking-mode="Ignore" class="contenedorMonedas">
+                <ui:Image name="IconoMoneda" class="imagenMonedas"/>
+                <ui:Label text="0" name="NumMonedas" class="numMonedas" style="-unity-font-definition: url(&quot;project://database/Packages/com.unity.render-pipelines.core/Runtime/Debugging/Prefabs/Fonts/PerfectDOSVGA437.ttf?fileID=12800000&amp;guid=74a5091d8707f334b9a5c31ef71a64ba&amp;type=3#PerfectDOSVGA437&quot;);"/>
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
