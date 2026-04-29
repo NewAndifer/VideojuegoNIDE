@@ -91,12 +91,8 @@
 .contenedorOpciones {
 }
 
-
-
-
-
 .labelSlider {
-    font-size: 59px;
+    font-size: 60px;
     -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&guid=71a55b0538d48354b87afab937af74d2&type=3#BoldPixels");
     -unity-font-style: normal;
     -unity-text-align: upper-center;
@@ -141,7 +137,7 @@ Slider #unity-dragger {
     border-right-color: rgb(0, 0, 0);
     border-top-color: rgb(0, 0, 0);
     border-bottom-color: rgb(0, 0, 0);
-    -unity-background-image-tint-color: rgb(162, 104, 44);
+    -unity-background-image-tint-color: #a2682cff;
     background-color: rgb(162, 104, 44);
     -unity-text-align: middle-left;
     align-content: center;
