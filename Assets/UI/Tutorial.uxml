@@ -5,9 +5,7 @@
         <ui:VisualElement name="tutorial-panel" class="panel-tutorial-contenedor">
             
             <ui:VisualElement name="content-area" class="panel-tutorial-contenido">
-                <!-- INTERCAMBIADO: El texto ahora va PRIMERO -->
                 <ui:Label name="tutorial-text" text="Texto de prueba" class="panel-tutorial-texto" />
-                <!-- INTERCAMBIADO: La imagen ahora va SEGUNDO -->
                 <ui:Image name="tutorial-image" class="panel-tutorial-imagen" />
             </ui:VisualElement>
 

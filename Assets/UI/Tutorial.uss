@@ -2,7 +2,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85); /* Un fondo más oscuro para resaltar el panel */
+    background-color: rgba(0, 0, 0, 0.85); 
     justify-content: center;
     align-items: center;
     display: none; 
@@ -14,7 +14,7 @@
     background-color: #d1a773; 
     border-width: 15px;
     border-color: #3b250e; 
-    border-radius: 0px; /* Bordes rectos para un estilo más pixel-art */
+    border-radius: 0px; 
     padding: 30px;
     flex-direction: column;
 }
@@ -25,19 +25,18 @@
 }
 
 .panel-tutorial-imagen {
-    flex-grow: 1; /* Le dice que ocupe el espacio vertical sobrante */
-    width: 100%; /* ¡Esto es la clave! Obliga a la imagen a estirarse a lo ancho */
-    margin-top: 20px; /* Un poco de espacio para separarla del texto de arriba */
+    flex-grow: 1; 
+    width: 100%;
+    margin-top: 20px; 
     margin-bottom: 20px;
-    -unity-background-scale-mode: scale-to-fit; /* Hace que crezca todo lo posible sin deformarse ni perder su proporción original */
+    -unity-background-scale-mode: scale-to-fit; 
 }
 
 .panel-tutorial-texto {
-    font-size: 50px; /* Tamaño más grande */
+    font-size: 50px; 
     color: rgb(30, 20, 10);
     white-space: normal; 
     -unity-text-align: middle-center;
-    /* Aplicando tu fuente personalizada */
     -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&guid=71a55b0538d48354b87afab937af74d2&type=3#BoldPixels");
 }
 
@@ -48,7 +47,6 @@
     align-items: center;
 }
 
-/* Aplicando el estilo de tus botones principales */
 .panel-tutorial-boton-navegacion {
     font-size: 50px;
     -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.ttf?fileID=12800000&guid=71a55b0538d48354b87afab937af74d2&type=3#BoldPixels");
@@ -56,7 +54,6 @@
     height: 110px;
     align-items: center;
     align-self: center;
-    /* Tu imagen normal */
     background-image: url("project://database/Assets/Cowboy%20Cats/Untitled%204.png?fileID=-2401453818774780720&guid=52383d200f78a4551836d2ca757c6796&type=3#Untitled 4_5");
     background-color: rgba(255, 255, 255, 0);
     border-left-color: rgba(0, 0, 0, 0);
@@ -67,6 +64,5 @@
 }
 
 .panel-tutorial-boton-navegacion:hover {
-    /* Tu imagen de hover */
     background-image: url("project://database/Assets/Cowboy%20Cats/Untitled%204.png?fileID=2935242376306719514&guid=52383d200f78a4551836d2ca757c6796&type=3#Untitled 4_6");
 }

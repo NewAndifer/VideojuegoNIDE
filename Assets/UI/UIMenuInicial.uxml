@@ -2,14 +2,12 @@
     <Style src="project://database/Assets/UI/UIMenuPrincipal.uss?fileID=7433441132597879392&amp;guid=07e24bccead7b453b94a0d20027f269d&amp;type=3#UIMenuPrincipal"/>
     <ui:VisualElement name="ContenedorPrincipal" picking-mode="Ignore" class="contenedorPrincipal">
         
-        <!-- ZONA IZQUIERDA: Aquí ponemos el botón del Tutorial -->
         <ui:VisualElement name="ContenedorTutorial" class="contenedorTercio">
             <ui:VisualElement name="TutorialCaja" class="creditos">
                 <ui:Button text="Tutorial" name="BotonTutorial" class="boton"/>
             </ui:VisualElement>
         </ui:VisualElement>
 
-        <!-- ZONA CENTRAL: Botones principales -->
         <ui:VisualElement name="ContenedorBotones" class="contenedorTercio">
             <ui:VisualElement name="Botones" class="botones">
                 <ui:Button text="Iniciar" name="BotonIniciar" selectable="true" focusable="true" parse-escape-sequences="false" class="boton"/>
@@ -18,7 +16,6 @@
             </ui:VisualElement>
         </ui:VisualElement>
 
-        <!-- ZONA DERECHA: Créditos -->
         <ui:VisualElement name="ContenedorCreditos" class="contenedorTercio">
             <ui:VisualElement name="Creditos" class="creditos">
                 <ui:Button text="Créditos" class="boton"/>

@@ -29,7 +29,6 @@ public class TutorialManager : MonoBehaviour
 
     private void OnEnable()
     {
-        // 1. Verificación de seguridad
         if (uiDocumentTutorial == null)
         {
             Debug.LogError("Error: Falta asignar el 'UIDocument Tutorial' en el Inspector del TutorialManager.");
@@ -44,25 +43,21 @@ public class TutorialManager : MonoBehaviour
             return;
         }
 
-        // 2. Buscar referencias
         panelOverlay = root.Q<VisualElement>("tutorial-overlay");
         imagenTutorial = root.Q<Image>("tutorial-image");
         textoTutorial = root.Q<Label>("tutorial-text");
         botonAnterior = root.Q<Button>("button-back");
         botonSiguiente = root.Q<Button>("button-next");
 
-        // 3. Verificar si se encontraron los elementos en el XML
         if (botonAnterior == null || botonSiguiente == null || textoTutorial == null)
         {
             Debug.LogError("Error: No se encontraron algunos elementos de UI. Revisa que los 'name' en Tutorial.uxml coincidan exactamente con: 'button-back', 'button-next', 'tutorial-text'.");
             return;
         }
 
-        // 4. Suscribirse a eventos
         botonAnterior.clicked += MostrarPasoAnterior;
         botonSiguiente.clicked += MostrarPasoSiguiente;
 
-        // Ocultar al inicio
         ActualizarEstadoPanel(false);
     }
 
@@ -122,14 +117,12 @@ public class TutorialManager : MonoBehaviour
 
     private void ActualizarContenido()
     {
-        // Verificación de seguridad extra
         if (instrucciones == null || instrucciones.Count <= indiceActual || textoTutorial == null) return;
 
         TutorialStep pasoActual = instrucciones[indiceActual];
 
         if (pasoActual.imagen != null)
         {
-            // Asignamos el Sprite directamente al componente Image
             imagenTutorial.sprite = pasoActual.imagen; 
             
             imagenTutorial.style.display = DisplayStyle.Flex;

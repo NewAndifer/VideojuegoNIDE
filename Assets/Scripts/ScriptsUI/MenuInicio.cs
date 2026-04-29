@@ -7,9 +7,9 @@ public class MenuInicio : MonoBehaviour
     private UIDocument menu;
     private Button botonIniciar;
     private Button botonSalir;
-    private Button botonTutorial; // Referencia al nuevo botón
+    private Button botonTutorial;
 
-    private TutorialManager tutorialManager; // Referencia al script del tutorial
+    private TutorialManager tutorialManager; 
 
     void OnEnable()
     {
@@ -18,9 +18,8 @@ public class MenuInicio : MonoBehaviour
         
         botonIniciar = root.Q<Button>("BotonIniciar");
         botonSalir = root.Q<Button>("BotonSalir");
-        botonTutorial = root.Q<Button>("BotonTutorial"); // Buscamos el botón en el XML
+        botonTutorial = root.Q<Button>("BotonTutorial"); 
 
-        // Buscamos el TutorialManager en la escena
         tutorialManager = FindAnyObjectByType<TutorialManager>();
 
         if (botonIniciar != null) botonIniciar.clicked += IniciarJuego;
@@ -30,7 +29,6 @@ public class MenuInicio : MonoBehaviour
 
     void Start()
     {
-        // Esto hará que el tutorial se abra automáticamente al cargar la escena
         AbrirTutorial();
     }
 
