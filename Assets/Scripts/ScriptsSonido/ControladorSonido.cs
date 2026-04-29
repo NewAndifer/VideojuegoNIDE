@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.Audio; // Necesario para el Mixer
+using UnityEngine.Audio;
 
 public class ControladorSonido : MonoBehaviour
 {
     public static ControladorSonido Instance;
-
 
     [Header("Canales de Audio")]
     [SerializeField] private AudioSource sfxSource;
@@ -23,12 +22,24 @@ public class ControladorSonido : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            
+            // --- NUEVO: Cargamos los valores al abrir el juego ---
+            // El '1f' es el valor por defecto si es la primera vez que juegan
+            ultimoVolumenMusica = PlayerPrefs.GetFloat("VolumenMusica", 1f);
+            ultimoVolumenSFX = PlayerPrefs.GetFloat("VolumenSFX", 1f);
         }
         else
         {
             Destroy(gameObject);
             return;
         }
+    }
+
+    private void Start()
+    {
+        // Aplicamos el volumen cargado al Mixer justo al iniciar
+        SetVolumenMusica(ultimoVolumenMusica);
+        SetVolumenSFX(ultimoVolumenSFX);
     }
 
     // --- EFECTOS (SFX) ---
@@ -50,16 +61,22 @@ public class ControladorSonido : MonoBehaviour
     // --- MÉTODOS PARA EL MENÚ DE AJUSTES ---
     public void SetVolumenMusica(float sliderValue)
     {
-        // Guardamos el valor para que la UI lo pueda leer después
         ultimoVolumenMusica = sliderValue;
         mainMixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
+        
+        // --- NUEVO: Guardamos permanentemente ---
+        PlayerPrefs.SetFloat("VolumenMusica", sliderValue);
+        PlayerPrefs.Save();
     }
 
     public void SetVolumenSFX(float sliderValue)
     {
-        // Guardamos el valor
         ultimoVolumenSFX = sliderValue;
         mainMixer.SetFloat("SFXVol", Mathf.Log10(sliderValue) * 20);
+        
+        // --- NUEVO: Guardamos permanentemente ---
+        PlayerPrefs.SetFloat("VolumenSFX", sliderValue);
+        PlayerPrefs.Save();
     }
 
     public void StopMusica()
