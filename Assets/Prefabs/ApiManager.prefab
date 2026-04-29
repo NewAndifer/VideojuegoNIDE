@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3572735725369208626}
   - component: {fileID: 4297550042688086417}
+  - component: {fileID: 770342915380164460}
   m_Layer: 0
   m_Name: ApiManager
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: JuegoPrincipal::ActualizarMonedasApi
   baseUrl: https://zadcg5xn26ho3hqwwdiafr2z3u0pndgb.lambda-url.us-east-1.on.aws
   endpoint: /juego/updateMonedas
+--- !u!114 &770342915380164460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6678196901846088178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9b23c426bf44464b9aafe3603ce748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::ActualizarPuertasApi
+  baseUrl: https://zadcg5xn26ho3hqwwdiafr2z3u0pndgb.lambda-url.us-east-1.on.aws
+  endpoint: /juego/updatePuerta
