@@ -44997,6 +44997,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: idNPC
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: nombre
       value: Silas
       objectReference: {fileID: 0}
@@ -46568,7 +46572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb3d20c552e54c8ab7cc50b99db0141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: JuegoPrincipal::NPCMapa
-  idNPC: 3
+  idNPC: 15
   operacion: suma
   tipo: bandido
   nombre: Desconocido
@@ -63025,7 +63029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: idNPC
-      value: 2
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: nombre
@@ -63227,6 +63231,10 @@ PrefabInstance:
     - target: {fileID: 2475419038042076613, guid: e17f1111121dc44409787562e3bd38eb, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844489751604994214, guid: e17f1111121dc44409787562e3bd38eb, type: 3}
+      propertyPath: idNPC
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6576023296416301751, guid: e17f1111121dc44409787562e3bd38eb, type: 3}
       propertyPath: m_LocalPosition.x
