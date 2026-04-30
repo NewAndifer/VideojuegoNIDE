@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lives : MonoBehaviour
 {
@@ -8,8 +9,7 @@ public class Lives : MonoBehaviour
     void Start()
     {
         currentLives = maxLives;
-        
-        // Optional: Ensure the UI starts with 3 lives visually
+
         if (BossUIManager.Instance != null)
         {
             BossUIManager.Instance.UpdateHearts(currentLives);
@@ -21,7 +21,6 @@ public class Lives : MonoBehaviour
         currentLives -= amount;
         if (currentLives < 0) currentLives = 0;
 
-        // Pass the new number of lives to our UI Toolkit script
         if (BossUIManager.Instance != null)
         {
             BossUIManager.Instance.UpdateHearts(currentLives);
@@ -29,8 +28,8 @@ public class Lives : MonoBehaviour
 
         if (currentLives <= 0)
         {
-            Debug.Log("Player Defeated");
-            // Handle Game Over logic here
+            if(GameManager.Instancia != null)
+            SceneManager.LoadScene(GameManager.Instancia.ultimaEscenaMapa);
         }
     }
 }

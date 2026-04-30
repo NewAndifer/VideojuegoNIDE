@@ -1,0 +1,37 @@
+:root {
+}
+
+.contenedorPrincipal {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.contenedorTexto {
+    width: 60%;
+    height: 60%;
+    justify-content: space-around;
+    align-items: center;
+    align-content: flex-end;
+    border-top-width: 15px;
+    border-right-width: 15px;
+    border-bottom-width: 15px;
+    border-left-width: 15px;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    background-color: rgb(209, 167, 115);
+    -unity-text-align: upper-center;
+}
+
+.textoMensaje {
+    font-size: 120px;
+    -unity-text-align: middle-center;
+    -unity-font-style: normal;
+    -unity-font-definition: url("project://database/Assets/BoldPixels/Assets/font/BoldPixels.otf?fileID=12800000&guid=19b9bfe81b147ba4f91b639e7c1b07d9&type=3#BoldPixels");
+}

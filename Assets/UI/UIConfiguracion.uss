@@ -6,7 +6,7 @@
     align-self: center;
     align-content: center;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: #000000d9;
 }
 
 .contenedorConfiguracion {
@@ -14,7 +14,7 @@
     justify-content: space-around;
     align-self: center;
     align-content: center;
-    background-color: rgb(209, 167, 115);
+    background-color: #d1a773ff;
     border-top-width: 15px;
     border-right-width: 15px;
     border-bottom-width: 15px;

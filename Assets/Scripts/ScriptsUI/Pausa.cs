@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class Pausa : MonoBehaviour
 {
@@ -103,7 +103,7 @@ public class Pausa : MonoBehaviour
         contenedorPrincipal.style.backgroundColor = new StyleColor(Color.clear);
 
         contenedorPrincipal.pickingMode = PickingMode.Ignore;
-        
+
         menuPausa.style.display = DisplayStyle.None;
         panelOpciones.style.display = DisplayStyle.None;
         botonPausa.style.display = DisplayStyle.Flex;

@@ -4,6 +4,7 @@
 }
 
 .TimeContainer {
+    width: 100%;
 }
 
 .Heart {
@@ -13,4 +14,9 @@
 }
 
 .contenedorPrincipal {
+}
+
+.life {
+    width: 100px;
+    height: 100px;
 }

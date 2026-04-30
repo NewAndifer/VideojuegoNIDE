@@ -10,7 +10,7 @@ public class BossUIManager : MonoBehaviour
     private VisualElement[] hearts = new VisualElement[3];
 
     private Label timeCountLabel;
-    private float timeRemaining = 60f; 
+    private float timeRemaining = 10f; 
     private bool isTimerActive = false;
 
     public float GetTimeRemaining() { return timeRemaining; }
@@ -44,7 +44,7 @@ public class BossUIManager : MonoBehaviour
         timeCountLabel = root.Q<Label>("TimeCount");
 
         UpdateTimerText(timeRemaining);
-        StartTimer();
+        //StartTimer();
     }
 
     private void Update()
@@ -66,7 +66,7 @@ public class BossUIManager : MonoBehaviour
 
     public void StartTimer()
     {
-        timeRemaining = 60f; 
+        //timeRemaining = 60f; 
         isTimerActive = true;
     }
 
@@ -105,7 +105,8 @@ public class BossUIManager : MonoBehaviour
 
         if (currentLives <= 0)
         {
-            SceneManager.LoadScene("Mainmap_01");
+            if(GameManager.Instancia != null)
+            SceneManager.LoadScene(GameManager.Instancia.ultimaEscenaMapa);
         }
     }
 }

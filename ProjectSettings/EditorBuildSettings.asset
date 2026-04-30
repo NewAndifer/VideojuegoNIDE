@@ -26,5 +26,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MAPS/Crossroads.unity
     guid: 56becb81de2c74d79bc2733c68389c2f
+  - enabled: 1
+    path: Assets/Scenes/MapScenes/MapaResta.unity
+    guid: 3928537264af242d5a68e55be09a3e17
+  - enabled: 1
+    path: Assets/Scenes/MapScenes/MapaMultiplicacion.unity
+    guid: b5735053b982d4053bb2a64984be2a26
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

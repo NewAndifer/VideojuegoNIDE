@@ -42,6 +42,6 @@ public class IniciadorCombate : MonoBehaviour
             GameManager.Instancia.posicionRetornoMapa = player.transform.position;
 
         string escena = npc.tipo.ToLower() == "boss" ? "BossCombat" : "BanditCombat";
-        SceneManager.LoadScene(npc.tipo.ToLower() == "boss" ? "BossCombat" : "BanditCombat");
+        SceneManager.LoadScene(npc.tipo.ToLower() == "boss" ? "Bossfight" : "BanditCombat");
     }
 }

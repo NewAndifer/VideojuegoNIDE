@@ -1,0 +1,256 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5760778330012824075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571256786672751423}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &571256786672751423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760778330012824075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4720623486081450576}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6313973139603921982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4720623486081450576}
+  - component: {fileID: 2061926025239729034}
+  m_Layer: 0
+  m_Name: PuertaSumaVertical
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4720623486081450576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313973139603921982}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.9188199, y: 0.078040004, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8048152394622428612}
+  - {fileID: 2335864356130633390}
+  - {fileID: 571256786672751423}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2061926025239729034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313973139603921982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c78d09576ca4f7b9901c7e375d942b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::IdentificadorPuerta
+  idPuerta: 1
+  abierta: 1
+  costo: 50
+  puertaBloqueada: {fileID: 8400666728076437154}
+  puertaDesbloqueada: {fileID: 5760778330012824075}
+  miLetrero: {fileID: 3710875421412261183}
+  interactAction:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: dd71f382-bdde-4b81-8f0f-5028334d88a1
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 39907050-f287-49e6-9183-c68e6384b98e
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Interact
+      m_Flags: 0
+    m_Flags: 0
+  apiMonedas: {fileID: 3052796824616204301}
+  apiPuertas: {fileID: 0}
+--- !u!1001 &661277429215531413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4720623486081450576}
+    m_Modifications:
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.46744
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8575499
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059128845609760567, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+      propertyPath: m_Name
+      value: PuertaCerradaVertical
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+--- !u!114 &3710875421412261183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4202696115266612394, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+  m_PrefabInstance: {fileID: 661277429215531413}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5592aac5191164c5792548633e69401e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::LetreroDinamico
+--- !u!4 &8048152394622428612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7394228509650842705, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+  m_PrefabInstance: {fileID: 661277429215531413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8400666728076437154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9059128845609760567, guid: cd846db4a3ffc4db287f39eca1b24085, type: 3}
+  m_PrefabInstance: {fileID: 661277429215531413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1296544622781340060
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4720623486081450576}
+    m_Modifications:
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.00744
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.31245
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678196901846088178, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+      propertyPath: m_Name
+      value: ApiManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+--- !u!4 &2335864356130633390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3572735725369208626, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+  m_PrefabInstance: {fileID: 1296544622781340060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3052796824616204301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4297550042688086417, guid: 0c0f74f00d34b41c8b72ba478cdec294, type: 3}
+  m_PrefabInstance: {fileID: 1296544622781340060}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194bb2eb5d4ad480a8510f8239fac8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: JuegoPrincipal::ActualizarMonedasApi

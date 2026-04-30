@@ -22,7 +22,7 @@ public class ControladorSonido : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            
+
             // --- NUEVO: Cargamos los valores al abrir el juego ---
             // El '1f' es el valor por defecto si es la primera vez que juegan
             ultimoVolumenMusica = PlayerPrefs.GetFloat("VolumenMusica", 1f);
@@ -63,7 +63,7 @@ public class ControladorSonido : MonoBehaviour
     {
         ultimoVolumenMusica = sliderValue;
         mainMixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
-        
+
         // --- NUEVO: Guardamos permanentemente ---
         PlayerPrefs.SetFloat("VolumenMusica", sliderValue);
         PlayerPrefs.Save();
@@ -73,7 +73,7 @@ public class ControladorSonido : MonoBehaviour
     {
         ultimoVolumenSFX = sliderValue;
         mainMixer.SetFloat("SFXVol", Mathf.Log10(sliderValue) * 20);
-        
+
         // --- NUEVO: Guardamos permanentemente ---
         PlayerPrefs.SetFloat("VolumenSFX", sliderValue);
         PlayerPrefs.Save();

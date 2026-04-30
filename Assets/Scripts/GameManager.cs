@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public int monedasRecompensaActual = 0;
     // En GameManager.cs añade esto:
     [Header("Navegación")]
-    public string ultimaEscenaMapa = "Crossroads"; // Valor por defecto por seguridad
+    public string ultimaEscenaMapa = "Crossroads"; 
     public Vector3 posicionRetornoMapa;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
