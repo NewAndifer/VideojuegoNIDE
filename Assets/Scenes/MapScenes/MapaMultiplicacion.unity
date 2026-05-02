@@ -15788,6 +15788,10 @@ PrefabInstance:
       value: Frank
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: monedas
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: miLetrero
       value: 
       objectReference: {fileID: 1085484736}
@@ -17778,6 +17782,10 @@ PrefabInstance:
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: nombre
       value: Rusty
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: monedas
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: miLetrero
@@ -21641,6 +21649,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2061926025239729034, guid: 1f7645534905b4cc8a575e28b3eb4aa7, type: 3}
+      propertyPath: costo
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061926025239729034, guid: 1f7645534905b4cc8a575e28b3eb4aa7, type: 3}
       propertyPath: idPuerta
       value: 10
       objectReference: {fileID: 0}
@@ -22922,6 +22934,10 @@ PrefabInstance:
     - target: {fileID: 5844489751604994214, guid: e17f1111121dc44409787562e3bd38eb, type: 3}
       propertyPath: idNPC
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844489751604994214, guid: e17f1111121dc44409787562e3bd38eb, type: 3}
+      propertyPath: monedas
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 5844489751604994214, guid: e17f1111121dc44409787562e3bd38eb, type: 3}
       propertyPath: operacion
@@ -25414,6 +25430,10 @@ PrefabInstance:
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: nombre
       value: Joe
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
+      propertyPath: monedas
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 8430131899853944098, guid: 72bf40cbadbee4fcda6cdbefe49e8184, type: 3}
       propertyPath: operacion
@@ -29956,6 +29976,10 @@ PrefabInstance:
     - target: {fileID: 1047948333210741948, guid: 1f7645534905b4cc8a575e28b3eb4aa7, type: 3}
       propertyPath: m_SortingOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061926025239729034, guid: 1f7645534905b4cc8a575e28b3eb4aa7, type: 3}
+      propertyPath: costo
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 2061926025239729034, guid: 1f7645534905b4cc8a575e28b3eb4aa7, type: 3}
       propertyPath: abierta

@@ -1909,6 +1909,10 @@ PrefabInstance:
       value: -2.52
       objectReference: {fileID: 0}
     - target: {fileID: 4821114547628745432, guid: b5e6dc119d99f4497bcd0eb2830551fb, type: 3}
+      propertyPath: costo
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4821114547628745432, guid: b5e6dc119d99f4497bcd0eb2830551fb, type: 3}
       propertyPath: idPuerta
       value: 4
       objectReference: {fileID: 0}
@@ -2911,7 +2915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4821114547628745432, guid: b5e6dc119d99f4497bcd0eb2830551fb, type: 3}
       propertyPath: costo
-      value: 1
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4821114547628745432, guid: b5e6dc119d99f4497bcd0eb2830551fb, type: 3}
       propertyPath: idPuerta
@@ -9240,6 +9244,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1114008172}
     m_Modifications:
+    - target: {fileID: 2061926025239729034, guid: 1f7645534905b4cc8a575e28b3eb4aa7, type: 3}
+      propertyPath: costo
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4720623486081450576, guid: 1f7645534905b4cc8a575e28b3eb4aa7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9188199
