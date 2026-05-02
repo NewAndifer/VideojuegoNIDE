@@ -1,8 +1,8 @@
-# Kid Plays: Cat West
+# Kid Plays: CatWest
 
 
 ## Contexto Académico
-Este proyecto es el repositorio del videojuego "Catwest Redemption" de la plataforma "Kid Plays".
+Este proyecto es el repositorio del videojuego "CatWest Redemption" de la plataforma "Kid Plays".
 
 * **Materia:** Construcción de software y toma de decisiones (Grupo 402)
 * **Fecha:** 01 de Mayo de 2026
