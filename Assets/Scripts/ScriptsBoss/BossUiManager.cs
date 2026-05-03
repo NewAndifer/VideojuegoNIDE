@@ -10,7 +10,7 @@ public class BossUIManager : MonoBehaviour
     private VisualElement[] hearts = new VisualElement[3];
 
     private Label timeCountLabel;
-    private float timeRemaining = 10f; 
+    private float timeRemaining = 60f; 
     private bool isTimerActive = false;
 
     public float GetTimeRemaining() { return timeRemaining; }
